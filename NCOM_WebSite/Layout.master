@@ -8,6 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>الجمعية الخيرية لإدارة دور الأيتام - <%: Page.Title %></title>
 
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
     <style>
         html {
             direction: rtl;
@@ -17,11 +20,9 @@
             text-align: right !important;
         }
     </style>
+
     <asp:ContentPlaceHolder id="headContent" runat="server">
     </asp:ContentPlaceHolder>
-
-    <link href="Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -29,6 +30,7 @@
         
         </asp:ContentPlaceHolder>
     </form>
+
     <script src="Scripts/jquery-3.4.1.slim.min.js"></script>
     <script src="Scripts/popper.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
