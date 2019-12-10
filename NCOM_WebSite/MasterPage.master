@@ -1,0 +1,49 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html lang="ar">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الجمعية الخيرية لإدارة دور الأيتام - <%: Page.Title %></title>
+
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="MasterPage.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder id="headContent" runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+
+<body>
+    <form id="form1" runat="server">
+        <header>
+            <div id="charityHeading">
+                <img id="charityLogo" src="Images\logo.png" alt="Charity logo"/>
+                <p id="charityName">الجمعية الخيرية لإدارة دور الأيتام<br />National Charity for Orphanage Management</p>
+            </div>
+        </header>
+
+        <div>
+            <asp:ContentPlaceHolder id="bodyContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+        <footer>
+            <address>
+                الهاتف <a href="tel:+963112255110"> +963 112 255 110 </a><br />
+                الإيميل: <a href="mailto:info@ncom.sy">info@ncom.sy</a><br />
+                العنوان: دمشق، شارع النهضة، حي الوحدة، مبنى 511<br />
+                فيسبوك: <a href="http://www.facebook.com/NCOM/">NCOM</a>
+                انستحرام: <a href="https://www.instagram.com/NCOM/">@NCOM</a>
+            </address>
+        </footer>
+
+        <script src="Scripts/jquery-3.4.1.slim.min.js"></script>
+        <script src="Scripts/popper.min.js"></script>
+        <script src="Scripts/bootstrap.min.js"></script>
+    </form>
+</body>
+</html>

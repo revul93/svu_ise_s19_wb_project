@@ -1,32 +1,14 @@
-﻿<%@ Page Title="الرئيسية" Language="C#" MasterPageFile="~/Layout.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="الرئيسية" Language="C#" MasterPageFile="~/DefaultLayout.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
-<asp:Content ID="headContent" ContentPlaceHolderID="headContent" Runat="Server">
-    <link rel="stylesheet" href="StyleSheet.css" />
+<asp:Content ID="DefaultHead" ContentPlaceHolderID="headContent" Runat="Server">
+    <link rel="Default.css" href="StyleSheet.css" />
 </asp:Content>
 
-
-<asp:Content ID="bodyContent" ContentPlaceHolderID="bodyContnet" Runat="Server">
-    <header>
-        <div id="charityHeading">
-            <img id="charityLogo" src="Images\logo.png" alt="Charity logo"/>
-            <p id="charityName">الجمعية الخيرية لإدارة دور الأيتام<br />National Charity for Orphanage Management</p>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#">الرئيسية</a></li>
-                <li><a href="#">دور الأيتام</a></li>
-                <li><a href="#">تبرع الآن</a></li>
-                <li id="loginButton"><a href="Login.aspx">تسجيل دخول</a></li>
-            </ul>
-        </nav>
-    </header>
-
+<asp:Content ID="DefaultBody" ContentPlaceHolderID="bodyContent" Runat="Server">
     <section>
-        <!--- Banner Image -->
         <img src="Images/OrphanKidsEating.jpg" id="bannerImage" alt="Banner Image" />
     </section>
     <section>
-        <!--- General Info -->
         <div class="container">
             <div class="row">
                 <div class="col generalInfoItems">
@@ -57,7 +39,6 @@
 
     </section>
     <section>
-        <!-- About NCOM -->
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -75,15 +56,4 @@
             </div>"
         </div>
     </section>
-    <footer>
-        <!-- Contact Information -->
-        <address>
-            الهاتف <a href="tel:+963112255110"> +963 112 255 110 </a><br />
-            الإيميل: <a href="mailto:info@ncom.sy">info@ncom.sy</a><br />
-            العنوان: دمشق، شارع النهضة، حي الوحدة، مبنى 511<br />
-            فيسبوك: <a href="http://www.facebook.com/NCOM/">NCOM</a>
-            انستحرام: <a href="https://www.instagram.com/NCOM/">@NCOM</a>
-        </address>
-    </footer>
 </asp:Content>
-

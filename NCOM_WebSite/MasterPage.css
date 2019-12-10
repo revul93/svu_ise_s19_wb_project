@@ -1,0 +1,47 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    direction: rtl;
+}
+
+body {
+    text-align: right;
+}
+
+#charityHeading {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: azure;
+}
+
+#charityLogo {
+    display: block;
+    width: 60px;
+    margin: 0 auto;
+    height: auto;
+}
+
+#charityName {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+footer {
+    background-color: lightslategray;
+    width: 70%;
+    margin: 0 auto;
+    padding-top: 15px;
+}
+
+@media (max-width: 600px) {
+    #charityName {
+        font-size: 1.0rem;
+    }
+
+    #charityLogo {
+        width: 30px;
+    }
+}
