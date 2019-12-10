@@ -41,8 +41,6 @@ public partial class Orphanage : System.Web.UI.Page
             )});
         }
 
-        
-
         dataReader.Close();
         sqlConnection.Close();
     }
