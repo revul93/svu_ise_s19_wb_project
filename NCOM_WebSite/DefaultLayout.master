@@ -13,7 +13,7 @@
         <ul>
             <li><a href="Default.aspx">الرئيسية</a></li>
             <li><a href="Orphanage.aspx">دور الأيتام</a></li>
-            <li><a href="#">تبرع الآن</a></li>
+            <li><a href="Donate.aspx">تبرع الآن</a></li>
             <li id="loginButton"><a href="Login.aspx">تسجيل دخول</a></li>
         </ul>
     </nav>
@@ -21,4 +21,3 @@
     <asp:ContentPlaceHolder ID="bodyContent" runat="server">
     </asp:ContentPlaceHolder>
 </asp:Content>
-
