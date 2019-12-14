@@ -1,7 +1,6 @@
 ﻿nav {
     background-color: cadetblue;
     color: lavender;
-    height: 40px;
 }
 
 nav ul {
@@ -14,17 +13,17 @@ nav ul {
 nav ul li {
     float: right;
     margin: 0 15px;
-    display: block;
+    display: inline-block;
     height: 100%;
 }
 
 nav ul li a {
-    padding: 0 5px;
+    padding: 15px 5px;
     display: flex;
     height: 100%;
     align-items: center;
     justify-content: center;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
 }
 
 nav ul li a, nav ul li a:visited {
@@ -42,15 +41,20 @@ nav ul li a:hover {
     float: left;
 }
 
-#bannerImage {
-    display: block;
-    width: 100%;
+@media (max-width: 750px) {
+    nav ul {
+        width: 100%;
+    }
 }
 
-.generalInfoItems {
-    background-color: rgba( 218, 237, 100, 0.7);
-    height: 100px;
-    margin: 40px;
-    text-align: center;
-    padding-top: 15px;
+@media (max-width: 600px) {
+    nav ul li {
+        margin: 0 2px;
+        display: inline;
+    }
+
+    nav ul li a {
+        padding: 3px 1px;
+        font-size: 1.0rem;
+    }
 }

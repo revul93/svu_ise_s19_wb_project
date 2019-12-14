@@ -1,6 +1,6 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="DefaultLayout.master.cs" Inherits="DefaultLayout" %>
 
-<asp:Content ID="DefaultMasterHead" ContentPlaceHolderID="headContent" Runat="Server">
+<asp:Content ID="defaultMasterHead" ContentPlaceHolderID="headContent" Runat="Server">
     <link href="DefaultLayout.css" rel="stylesheet" />
 
     <asp:ContentPlaceHolder ID="headContent" runat="server">
@@ -8,7 +8,7 @@
 </asp:Content>
 
 
-<asp:Content ID="DefaultMasterBody" ContentPlaceHolderID="bodyContent" Runat="Server">
+<asp:Content ID="defaultMasterBody" ContentPlaceHolderID="bodyContent" Runat="Server">
     <nav>
         <ul>
             <li><a href="Default.aspx">الرئيسية</a></li>

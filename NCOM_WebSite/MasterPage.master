@@ -5,11 +5,14 @@
 <html lang="ar">
 <head runat="server">
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>الجمعية الخيرية لإدارة دور الأيتام - <%: Page.Title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no" />
+    <title>الجمعية الوطنية لإدارة دور الأيتام - <%: Page.Title %></title>
 
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet"> 
+    <script src="https://kit.fontawesome.com/d2a024bed7.js"></script>
+    
 
     <link href="MasterPage.css" rel="stylesheet" />
     <asp:ContentPlaceHolder id="headContent" runat="server">
@@ -17,25 +20,26 @@
 </head>
 
 <body>
-    <header>
-        <div id="charityHeading">
-            <img id="charityLogo" src="Images\logo.png" alt="Charity logo"/>
-            <p id="charityName">الجمعية الخيرية لإدارة دور الأيتام<br />National Charity for Orphanage Management</p>
-        </div>
+    <header id="charityHeading">
+        <img id="charityLogo" src="Images\logo.png" alt="Charity logo"/>
+        <p id="charityName">الجمعية الوطنية لإدارة دور الأيتام<br />National Charity for Orphanage Management</p>
     </header>
 
-    <div>
-        <asp:ContentPlaceHolder id="bodyContent" runat="server">
-        </asp:ContentPlaceHolder>
-    </div>
+    <asp:ContentPlaceHolder id="bodyContent" runat="server">
+    </asp:ContentPlaceHolder>
 
     <footer>
+        <div id="footer-header">الجمعية الوطنية لإدارة دور الأيتام<br />
+        National Charity for Orphanage Management<br /></div>
         <address>
-            الهاتف <a href="tel:+963112255110"> +963 112 255 110 </a><br />
-            الإيميل: <a href="mailto:info@ncom.sy">info@ncom.sy</a><br />
-            العنوان: دمشق، شارع النهضة، حي الوحدة، مبنى 511<br />
-            فيسبوك: <a href="http://www.facebook.com/NCOM/">NCOM</a>
-            انستحرام: <a href="https://www.instagram.com/NCOM/">@NCOM</a>
+            دمشق، شارع النهضة، حي الوحدة، مبنى 511<br />
+            <span class="footer-contact-info"><i class="fas fa-phone-alt"></i><a href="tel:+963112255110">+963 112 255 110 </a></span>
+            <span class="footer-contact-info"><i class="fas fa-at"></i><a href="mailto:info@ncom.sy">info@ncom.sy</a></span>
+            <span class="footer-contact-info"> <i class="fab fa-facebook-square"></i><a href="http://www.facebook.com/NCOM/">NCOM</a></span>
+            <span class="footer-contact-info"> <i class="fab fa-instagram"></i><a href="https://www.instagram.com/NCOM/">@NCOM</a></span><br />
+            <span dir="rtl">جميع الحقوق محفوظة NCOM&reg; 2019</span><br />
+            Developed for SVU, ISE-WB Project S19<br />
+            By: omar_65270, khadija_71190<br />
         </address>
     </footer>
 

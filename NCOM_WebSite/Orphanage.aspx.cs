@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Web.UI.WebControls;
@@ -7,16 +8,17 @@ public partial class Orphanage : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        string connectionString = ConfigurationManager.ConnectionStrings["SQLDBConnection"].ToString();
-        SqlConnection sqlConnection = new SqlConnection(connectionString);
-        SqlCommand sqlCommand = new SqlCommand();
-        sqlCommand.Connection = sqlConnection;
+        DataTable dataTable = new DataTable();
+        using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLDBConnection"].ToString()))
+        {
+            sqlConnection.Open();
+            using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("SELECT * FROM Orphanage", sqlConnection))
+            {
+                sqlDataAdapter.Fill(dataTable);
+            }
+        }
 
-        sqlConnection.Open();
-        sqlCommand.CommandText = "SELECT * FROM Orphanage;";
-        
-        SqlDataReader dataReader = sqlCommand.ExecuteReader();
-        while (dataReader.Read())
+        foreach (DataRow dataRow in dataTable.Rows)
         {
             orphanagesList.Controls.Add(new Literal()
             {
@@ -31,17 +33,16 @@ public partial class Orphanage : System.Web.UI.Page
                 "<a href=\"tel:{8}\">{8}</a><br />\n" +
                 "<a href=\"mailto:{9}\">{9}</a><br />\n" +
                 "</address>\n" +
-                "</div>\n" +
-                "<iframe frameborder=\"0\" src=\"https://www.google.com/maps/embed/v1/view?key=AIzaSyDtAg4hm3DCht1NFjtO3UbPtP1rtShz-cs&center={10}&zoom=15\" allowfullscreen></iframe>",
-                    dataReader["Name"], dataReader["Logo"], dataReader["Description"],
-                    dataReader["Address.City"], dataReader["Address.Street"], dataReader["Address.Description"],
-                    dataReader["Capacity"], dataReader["SponsoredOrphans"],
-                    dataReader["Telephone"], dataReader["Email"],
-                    dataReader["Address.Coordinates"]
-            )});
+                "<iframe frameborder=\"0\" src=\"https://www.google.com/maps/embed/v1/view?key=AIzaSyDtAg4hm3DCht1NFjtO3UbPtP1rtShz-cs&center={10}&zoom=15\" allowfullscreen></iframe>" +
+                "</div>\n",
+                    dataRow["Name"], dataRow["Logo"], dataRow["Description"],
+                    dataRow["Address.City"], dataRow["Address.Street"], dataRow["Address.Description"],
+                    dataRow["Capacity"], dataRow["SponsoredOrphans"],
+                    dataRow["Telephone"], dataRow["Email"],
+                    dataRow["Address.Coordinates"]
+                )
+            });
         }
-
-        dataReader.Close();
-        sqlConnection.Close();
+        dataTable.Dispose();
     }
 }
