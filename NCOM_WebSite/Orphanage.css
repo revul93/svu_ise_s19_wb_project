@@ -1,0 +1,27 @@
+﻿.listContainer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 80%;
+    margin: 10px auto;
+    align-content: center;
+}
+
+.orphanageItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 10%;
+}
+
+.logo {
+    display: block;
+    width: 150px;
+    height: 150px;
+}
+
+.orphanageName {
+    text-align: center;
+    font-size: 32px;
+}

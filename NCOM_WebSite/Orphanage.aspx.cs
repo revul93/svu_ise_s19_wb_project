@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Web.UI.WebControls;
 
+
 public partial class Orphanage : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
@@ -20,11 +21,12 @@ public partial class Orphanage : System.Web.UI.Page
 
         foreach (DataRow dataRow in dataTable.Rows)
         {
+            
             orphanagesList.Controls.Add(new Literal()
             {
                 Text = String.Format(
-                "<div class=\"orphanage\">\n" +
-                "<img src=\"{1}\" alt=\"Logo of {0}\" />" +
+                "<div class=\"orphanageItem\">\n" +
+                "<img class=\"logo\" src=\"{1}\" alt=\"Logo of {0}\" />" +
                 "<address>\n" +
                 "<span class=\"orphanageName\">{0}</span><br />\n" +
                 "{2}<br />\n" +
