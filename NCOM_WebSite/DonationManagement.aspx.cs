@@ -19,20 +19,20 @@ public partial class DonationManagement : System.Web.UI.Page
             {
                 sqlCommand.Connection = sqlConnection;
 
-                sqlCommand.CommandText = String.Format("SELECT Id FROM [dbo].[Orphanage] WHERE ManagerId = {0}", user_id);
+                sqlCommand.CommandText = String.Format("SELECT id FROM [dbo].[Orphanage] WHERE manager_id = {0}", user_id);
                 orphanage_id = int.Parse(sqlCommand.ExecuteScalar().ToString());
 
                 DataTable dataTable = new DataTable();
                 using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(String.Format(
-                    "SELECT [Donor].[Name] AS donorName, [Donor].[Mobile] AS donorMobile, [Donor].[Email] AS donorEmail, " +
-                    "CONCAT([Donor].[Address.City], ',', [Donor].[Address.Street], ',', [Donor].[Address.Description]) AS donorAddress, " +
-                    "[Donation].[Amount] As donationAmount, [Donation].[Method] AS donationMethod, " +
-                    "[Donation].[DonorContacted] AS donorContacted, [Donation].[DonationCollected] donationCollected, " +
-                    "[Plan].[Name] AS planName " +
+                    "SELECT [Donor].[name] AS donorName, [Donor].[mobile] AS donorMobile, [Donor].[email] AS donorEmail, " +
+                    "CONCAT([Donor].[address_city], ',', [Donor].[address_street], ',', [Donor].[address_description]) AS donorAddress, " +
+                    "[Donation].[amount] As donationAmount, [Donation].[method] AS donationMethod, " +
+                    "[Donation].[donor_contacted] AS donorContacted, [Donation].[donation_collected] donationCollected, " +
+                    "[Plan].[name] AS planName " +
                     "FROM [dbo].[Donor] " +
-                    "INNER JOIN[dbo].[Donation] ON [Donor].Id = [Donation].[DonorId]" +
-                    "INNER JOIN[dbo].[Plan] ON [Donation].[PlanId] = [Plan].[Id]" +
-                    "WHERE [dbo].[Plan].[OrphanageId] = {0}", orphanage_id), sqlConnection))
+                    "INNER JOIN[dbo].[Donation] ON [Donor].id = [Donation].[donor_id]" +
+                    "INNER JOIN[dbo].[Plan] ON [Donation].[plan_id] = [Plan].[id]" +
+                    "WHERE [dbo].[Plan].[orphanage_id] = {0}", orphanage_id), sqlConnection))
                 {
                     sqlDataAdapter.Fill(dataTable);
                 }

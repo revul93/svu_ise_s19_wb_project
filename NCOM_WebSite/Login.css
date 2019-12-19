@@ -15,16 +15,8 @@
     align-items: center;
     justify-content: center;
     margin: 30px auto;
-    box-shadow: black 0px 40px 60px;
-}
-
-label {
-    padding-top: 50px;
-    display: block;
-    font-size: 32px;
-    font-family: 'Leckerli One','Algerian';
-    text-shadow: black 0px 20px 20px;
-    margin: 20px;
+    box-shadow: black 0px 70px 60px;
+   
 }
 
 .txt1 {
@@ -36,7 +28,7 @@ label {
 }
 
 .txt1[placeholder], .txt2[placeholder] {
-    font-family: 'Oleo Script Swash Caps';
+    font-family: 'Cairo', sans-serif;
     padding-right: 16px;
 }
 
@@ -47,13 +39,14 @@ label {
     border-radius: 4%;
     background-color: rgba(252,251,251,0.80);
     box-shadow: black 0px 30px 50px;
+    text-align: center;
 }
 
 .btnstyle {
     margin-top: 40px;
     margin-bottom: 60px;
     margin-right: 10px;
-    font-family: 'Oleo Script Swash Caps';
+    font-family: 'Cairo', sans-serif;
     font-size: 24px;
     border: 0px;
     color: black;

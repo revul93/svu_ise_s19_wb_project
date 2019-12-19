@@ -6,7 +6,7 @@
 
 
 <asp:Content ID="bodyContent" ContentPlaceHolderID="bodyContent" Runat="Server">
-    <div class="listContainer">
+    <div class="list-container">
         <asp:PlaceHolder ID="orphanagesList" runat="server">
 
         </asp:PlaceHolder>

@@ -2,9 +2,6 @@
 
 <asp:Content ID="headContent" ContentPlaceHolderID="headContent" Runat="Server">
     <link href="Login.css" rel="stylesheet" />
-    <style>
-        @import url('https://fonts.googleapis.com/css?family=Leckerli+One|Oleo+Script+Swash+Caps');
-    </style>
 </asp:Content>
 
     
@@ -12,10 +9,12 @@
     <form id="form1" runat="server">
         <section class="cover">
             <div class="elements">
-                    <label>تسجيل دخول</label>
-                    <asp:TextBox ID="usernameTextBox" CssClass="txt1 txtstyle" placeholder="اسم المستخدم" runat="server"></asp:TextBox>
-                    <asp:TextBox ID="passwordTextBox" CssClass="txt2 txtstyle" placeholder="كلمة السر" TextMode="Password" runat="server"></asp:TextBox>
-                    <asp:Button ID="loginButton" CssClass="btn1 btnstyle" runat="server" Text="تسجيل دخول" OnClick="loginButton_Click" />
+                <asp:TextBox ID="usernameTextBox" CssClass="txt1 txtstyle" placeholder="اسم المستخدم" runat="server"></asp:TextBox>
+                <!--<asp:RequiredFieldValidator ID="usernameValidator" runat="server" ControlToValidate="usernameTextBox" ErrorMessage="يرجى إدخال اسم المستخدم" CssClass="validation"></asp:RequiredFieldValidator>-->
+                
+                <asp:TextBox ID="passwordTextBox" CssClass="txt2 txtstyle" placeholder="كلمة السر" TextMode="Password" runat="server"></asp:TextBox>
+                <!--<asp:RequiredFieldValidator ID="passwordValidator" runat="server" ControlToValidate="passwordTextBox" ErrorMessage="يرجى إدخال كلمة السر" CssClass="validation"></asp:RequiredFieldValidator>-->
+                <asp:Button ID="loginButton" CssClass="btn1 btnstyle" runat="server" Text="تسجيل دخول" OnClick="loginButton_Click" />
             </div>
         </section>
     </form>

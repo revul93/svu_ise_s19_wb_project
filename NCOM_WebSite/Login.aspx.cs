@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Data;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Web.UI.WebControls;
 
 public partial class Login : System.Web.UI.Page
 {
@@ -25,13 +23,13 @@ public partial class Login : System.Web.UI.Page
         }
         else
         {
-            sqlCommand.CommandText = String.Format("SELECT * FROM [dbo].[User] WHERE Username = '{0}';", usernameTextBox.Text);
+            sqlCommand.CommandText = String.Format("SELECT * FROM [dbo].[User] WHERE username = '{0}';", usernameTextBox.Text);
             dataRead = sqlCommand.ExecuteReader();
             if (dataRead.Read())
             {
-                if (dataRead["Password"].ToString().Equals(passwordTextBox.Text))
+                if (dataRead["password"].ToString().Equals(passwordTextBox.Text))
                 {
-                    if (!bool.Parse(dataRead["isAdmin"].ToString()))
+                    if (!bool.Parse(dataRead["is_admin"].ToString()))
                     {
                         Response.Redirect("PlanManagement.aspx");
                     }

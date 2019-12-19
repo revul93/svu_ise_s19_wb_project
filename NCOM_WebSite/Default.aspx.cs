@@ -13,16 +13,16 @@ public partial class _Default : System.Web.UI.Page
             {
                 sqlCommand.Connection = sqlConnection;
 
-                sqlCommand.CommandText = "SELECT COUNT(Id) FROM [dbo].[Orphanage];";
+                sqlCommand.CommandText = "SELECT COUNT(id) FROM [dbo].[Orphanage];";
                 numOrphanages.Text = sqlCommand.ExecuteScalar().ToString();
 
-                sqlCommand.CommandText = "SELECT SUM(SponsoredOrphans) FROM [dbo].[Orphanage];";
+                sqlCommand.CommandText = "SELECT SUM(sponsored_orphans) FROM [dbo].[Orphanage];";
                 numSpoOrphans.Text = sqlCommand.ExecuteScalar().ToString();
 
-                sqlCommand.CommandText = "SELECT COUNT(Id) FROM [dbo].[Donor];";
+                sqlCommand.CommandText = "SELECT COUNT(id) FROM [dbo].[Donor];";
                 numDonors.Text = sqlCommand.ExecuteScalar().ToString();
 
-                sqlCommand.CommandText = "SELECT SUM(Amount) FROM [dbo].[Donation];";
+                sqlCommand.CommandText = "SELECT SUM(amount) FROM [dbo].[Donation];";
                 totalDonations.Text = sqlCommand.ExecuteScalar().ToString();
             }
         }
