@@ -1,0 +1,18 @@
+﻿.logo {
+    display: block;
+    width: 150px;
+    height: 100px;
+}
+
+i {
+    margin-right: 5px;
+}
+
+address {
+    text-align: center;
+}
+
+iframe {
+    width: 650px;
+    height: 500px;
+}

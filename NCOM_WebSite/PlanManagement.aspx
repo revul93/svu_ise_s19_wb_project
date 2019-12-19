@@ -1,7 +1,7 @@
-﻿<%@ Page Title="إدارة الحملات التبرعية" Language="C#" MasterPageFile="~/ManagerLayout.master" AutoEventWireup="true" CodeFile="PlanManagement.aspx.cs" Inherits="Manager" %>
+﻿<%@ Page Title="إدارة الحملات التبرعية" Language="C#" MasterPageFile="~/Masters/ManagerLayout.master" AutoEventWireup="true" CodeFile="PlanManagement.aspx.cs" Inherits="Manager" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="headContent" Runat="Server">
-    <link href="PlanManagement.css" rel="stylesheet" />
+    <link href="Style/list.css" rel="stylesheet" />
 </asp:Content>
 
 

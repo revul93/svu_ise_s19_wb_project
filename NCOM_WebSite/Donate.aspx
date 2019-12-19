@@ -1,7 +1,7 @@
-﻿<%@ Page Title="تبرع الآن" Language="C#" MasterPageFile="~/DefaultLayout.master" AutoEventWireup="true" CodeFile="Donate.aspx.cs" Inherits="Donate" %>
+﻿<%@ Page Title="تبرع الآن" Language="C#" MasterPageFile="~/Masters/DefaultLayout.master" AutoEventWireup="true" CodeFile="Donate.aspx.cs" Inherits="Donate" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="headContent" Runat="Server">
-    <link href="Donate.css" rel="stylesheet" />
+    <link href="Style/form.css" rel="stylesheet" />
 </asp:Content>
 
 
@@ -11,7 +11,7 @@
         <asp:DropDownList ID="orphanageDropDownList" runat="server" AutoPostBack="true" OnSelectedIndexChanged="OrphanageDropDownList_SelectedIndexChanged" CssClass="form-control"></asp:DropDownList>
         
         <asp:Label runat="server" CssClass="required"> الحملة: </asp:Label>
-        <asp:DropDownList ID="planDropDownList" runat="server" AutoPostBack="true" OnSelectedIndexChanged="planDropDownList_SelectedIndexChanged" CssClass="form-control"> </asp:DropDownList>
+        <asp:DropDownList ID="planDropDownList" runat="server" AutoPostBack="true" OnSelectedIndexChanged="PlanDropDownList_SelectedIndexChanged" CssClass="form-control"></asp:DropDownList>
         
         <asp:Label runat="server" CssClass="required"> كمية التبرع: </asp:Label>
         <asp:TextBox TextMode="Number" ID="amountTextBox" runat="server" CssClass="form-control">الكمية: </asp:TextBox>

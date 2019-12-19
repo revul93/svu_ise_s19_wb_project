@@ -48,9 +48,9 @@ public partial class DonationManagement : System.Web.UI.Page
                         donationList.Controls.Add(new Literal()
                         {
                             Text = String.Format(
-                                "<div class=\"donation\">\n" +
+                                "<div class=\"list-item\">\n" +
                                 "\t<p>\n" +
-                                "\t\t<span class=\"planName\">{0}</span><br />" +
+                                "\t\t<span class=\"item-name\">{0}</span><br />" +
                                 "\t\tDonor Name: {1}<br />\n" +
                                 "\t\tDonation method: {2}<br />\n" +
                                 "\t\tAmount: {3}<br />\n" +

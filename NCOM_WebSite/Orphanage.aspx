@@ -1,7 +1,8 @@
-﻿<%@ Page Title="دور الأيتام" Language="C#" MasterPageFile="~/DefaultLayout.master" AutoEventWireup="true" CodeFile="Orphanage.aspx.cs" Inherits="Orphanage" %>
+﻿<%@ Page Title="دور الأيتام" Language="C#" MasterPageFile="~/Masters/DefaultLayout.master" AutoEventWireup="true" CodeFile="Orphanage.aspx.cs" Inherits="Orphanage" %>
 
 <asp:Content ID="headConetent" ContentPlaceHolderID="headContent" Runat="Server">
-    <link href="Orphanage.css" rel="stylesheet" />
+    <link href="Style/list.css" rel="stylesheet" />
+    <link href="Style/Orphanage.css" rel="stylesheet" />
 </asp:Content>
 
 

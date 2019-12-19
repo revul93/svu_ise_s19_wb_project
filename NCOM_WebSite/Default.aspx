@@ -1,7 +1,7 @@
-﻿<%@ Page Title="الرئيسية" Language="C#" MasterPageFile="~/DefaultLayout.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="الرئيسية" Language="C#" MasterPageFile="~/Masters/DefaultLayout.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
 <asp:Content ID="DefaultHead" ContentPlaceHolderID="headContent" Runat="Server">
-    <link href="Default.css" rel="stylesheet" />
+    <link href="Style/Default.css" rel="stylesheet" />
 </asp:Content>
 
 <asp:Content ID="DefaultBody" ContentPlaceHolderID="bodyContent" Runat="Server">

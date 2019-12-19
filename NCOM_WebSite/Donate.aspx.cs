@@ -24,6 +24,12 @@ public partial class Donate : System.Web.UI.Page
         if (!IsPostBack)
         {
             ConnectDB();
+
+            ListItem firstItem = new ListItem("--- اختر دور الأيتام ---", "-1");
+            firstItem.Attributes["disabled"] = "disabled";
+            firstItem.Attributes["selected"] = "selected";
+            orphanageDropDownList.Items.Add(firstItem);
+
             sqlCommand.CommandText = "SELECT id, name FROM [dbo].[Orphanage];";
             dataReader = sqlCommand.ExecuteReader();
             while (dataReader.Read())
@@ -31,59 +37,70 @@ public partial class Donate : System.Web.UI.Page
                 orphanageDropDownList.Items.Add(new ListItem(dataReader["name"].ToString(), dataReader["id"].ToString()));
             }
             dataReader.Close();
-
             InitiatePlanDropDownList();
             InitiateMethodDropDownList();
             sqlConnection.Close();
         }
     }
 
-    protected void OrphanageDropDownList_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        planDropDownList.Items.Clear();
-        ConnectDB();
-        InitiatePlanDropDownList();
-        sqlConnection.Close();
-    }
-
-    protected void planDropDownList_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        methodDropDownList.Items.Clear();
-        ConnectDB();
-        InitiateMethodDropDownList();
-        sqlConnection.Close();
-    }
-
     protected void InitiatePlanDropDownList()
     {
-        sqlCommand.CommandText = String.Format("SELECT id, name, description FROM [dbo].[Plan] WHERE orphanage_id = {0};",
-                                                        int.Parse(orphanageDropDownList.SelectedValue));
-        dataReader = sqlCommand.ExecuteReader();
-        while (dataReader.Read())
-        {
-            planDropDownList.Items.Add(new ListItem(dataReader["name"].ToString(), dataReader["id"].ToString()));
-        }
-        dataReader.Close();
+        planDropDownList.Items.Clear();
+        ListItem firstItem = new ListItem("--- اختر إحدى الحملات ---", "-1");
+        firstItem.Attributes["disabled"] = "disabled";
+        firstItem.Attributes["selected"] = "selected";
+        planDropDownList.Items.Add(firstItem);
     }
-
     protected void InitiateMethodDropDownList()
     {
-        sqlCommand.CommandText = String.Format("SELECT type From [dbo].[plan] WHERE Id = {0}",
-                                            int.Parse(planDropDownList.SelectedValue));
-        dataReader = sqlCommand.ExecuteReader();
-        dataReader.Read();
-        if (dataReader["type"].ToString() == "physical")
-        {
-            methodDropDownList.Items.Add(new ListItem("عيني", "physical"));
-        }
-        else if (dataReader["type"].ToString() == "cash")
-        {
-            methodDropDownList.Items.Add(new ListItem("نقدي", "cash"));
-            methodDropDownList.Items.Add(new ListItem("شيك", "cheque"));
-            methodDropDownList.Items.Add(new ListItem("حوالة مصرفية", "bankTransfer"));
-        }
+        methodDropDownList.Items.Clear();
+        ListItem firstItem = new ListItem("--- اختر طريقة الدفع ---", "-1");
+        firstItem.Attributes["disabled"] = "disabled";
+        firstItem.Attributes["selected"] = "selected";
+        methodDropDownList.Items.Add(firstItem);
+    }
 
-        dataReader.Close();
+    protected void OrphanageDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        InitiatePlanDropDownList();
+        InitiateMethodDropDownList();
+        if ( int.Parse(orphanageDropDownList.SelectedValue) > 0)
+        {
+            ConnectDB();
+            sqlCommand.CommandText = String.Format("SELECT id, name, description FROM [dbo].[Plan] WHERE orphanage_id = {0};",
+                                                            int.Parse(orphanageDropDownList.SelectedValue));
+            dataReader = sqlCommand.ExecuteReader();
+            while (dataReader.Read())
+            {
+                planDropDownList.Items.Add(new ListItem(dataReader["name"].ToString(), dataReader["id"].ToString()));
+            }
+            sqlConnection.Close();
+        }
+    }
+    protected void PlanDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        InitiateMethodDropDownList();
+        if (int.Parse(planDropDownList.SelectedValue) > 0)
+        {
+            ConnectDB();
+            sqlCommand.CommandText = String.Format("SELECT type FROM [dbo].[Plan] WHERE id = {0};",
+                                                            int.Parse(planDropDownList.SelectedValue));
+            dataReader = sqlCommand.ExecuteReader();
+            dataReader.Read();
+            if (dataReader["type"].ToString() == "physical")
+            {
+                methodDropDownList.Items.Add(new ListItem("عيني", "physical"));
+            }
+            else if (dataReader["type"].ToString() == "cash")
+            {
+                methodDropDownList.Items.Add(new ListItem("نقدي", "cash"));
+                methodDropDownList.Items.Add(new ListItem("شيك", "cheque"));
+                methodDropDownList.Items.Add(new ListItem("حوالة مصرفية", "bankTransfer"));
+            }
+
+            dataReader.Close();
+            sqlConnection.Close();
+        }
     }
 
     protected void submitButton_Click(object sender, EventArgs e)
