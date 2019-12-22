@@ -10,9 +10,9 @@
 <asp:Content ID="adminLayoutBody" ContentPlaceHolderID="bodyContent" Runat="Server">
     <nav>
         <ul>
-            <li><a href="UserManageement.aspx">إدارة المستخدمين</a></li>
-            <li><a href="OrphanageManagement.aspx">إدارة دور الأيتام</a></li>
-            <li><a href="Reports.aspx">التقارير</a></li>
+            <li><a href="../UserManagement.aspx">إدارة المستخدمين</a></li>
+            <li><a href="../OrphanageManagement.aspx">إدارة دور الأيتام</a></li>
+            <li><a href="../Reports.aspx">التقارير</a></li>
             <li id="nav-button"><a href="#">تسجيل خروج</a></li>
         </ul>
     </nav>

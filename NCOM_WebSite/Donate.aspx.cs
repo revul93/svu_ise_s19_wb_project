@@ -118,7 +118,6 @@ public partial class Donate : System.Web.UI.Page
         sqlCommand.CommandText = String.Format("INSERT INTO [dbo].[Donation] ([donor_id], [plan_id], [amount], [method]) " +
                                      "VALUES('{0}', '{1}', '{2}', N'{3}'); SELECT CAST(SCOPE_IDENTITY() AS int)",
                                      donorId, planDropDownList.SelectedValue, int.Parse(amountTextBox.Text), methodDropDownList.SelectedValue);
-        Response.Write(sqlCommand.CommandText);
         if (Convert.ToInt32(sqlCommand.ExecuteScalar()) > 0) {
             Response.Redirect("Thanks.aspx");
         }

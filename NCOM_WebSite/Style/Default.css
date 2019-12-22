@@ -1,24 +1,21 @@
-﻿#welcome-images {
+﻿body {
+    background-color: aliceblue;
+}
+#welcome-images {
     width: 100%;
     border: 1px hidden;
 }
 
 .defenetion {
     font-size: 32px;
-    padding: 25px 25px 25px 25px;
-    margin: 15px;
+    padding: 25px;
+    margin: 30px auto;
     font-family: 'Cairo', sans-serif;
     display: flex;
+    align-items: center;
     justify-content: center;
-    align-content: center;
-    margin: 30px auto;
+    text-align: center;
     font-weight: bold;
-}
-
-.all {
-    border: thick;
-    width: 85%;
-    margin: 20px auto;
 }
 
 .items-container {
@@ -45,6 +42,11 @@
     text-align: center;
 }
 
+.aboutUsItemTitle {
+    font-size: 28px;
+    font-weight: bold;
+}
+
 hr {
     padding-left: 5px;
     padding-right: 5px;
@@ -56,7 +58,7 @@ hr {
 .donate {
     background-color: #778899;
     background-size: cover;
-    width: 85%;
+    width: 100%;
     margin: 100px auto;
     padding: 20px;
     color: azure;
@@ -69,9 +71,13 @@ hr {
     margin: 30px auto;
     padding: 10px;
     outline: none;
-    /*background-color: cadetblue;*/
-    color: azure;
     font-size: 18px;
-    border-radius: 5%;
+    border-radius: 10px;
     border: 2px solid azure;
+    color: white;
+}
+
+#donate-button:hover {
+    text-decoration: none;
+    background-color: #6a7b8d;
 }
