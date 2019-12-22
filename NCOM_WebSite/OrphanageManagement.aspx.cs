@@ -14,7 +14,7 @@ public partial class OrphanageManagement : System.Web.UI.Page
             using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLDBConnection"].ToString()))
             {
                 sqlConnection.Open();
-                using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("SELECT * FROM Orphanage", sqlConnection))
+                using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("SELECT * FROM [dbo].[Orphanage]", sqlConnection))
                 {
                     sqlDataAdapter.Fill(dataTable);
                 }

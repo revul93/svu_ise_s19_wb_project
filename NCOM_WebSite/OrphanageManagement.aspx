@@ -8,15 +8,15 @@
 <asp:Content ID="bodyContent" ContentPlaceHolderID="bodyContent" Runat="Server">
     <div class="link-list">
         <div class="link-list-item">
-            <a href="AddPlan.aspx">إضافة دور أيتام</a>
+            <a href="AddOrphanage.aspx">إضافة دور أيتام</a>
         </div>
         <div class="link-list-item">
-            <a href="AddPlan.aspx">تعديل دور أيتام</a>
+            <a href="EditOrphanage.aspx">تعديل دور أيتام</a>
         </div>
         <div class="link-list-item">
-            <a href="AddPlan.aspx">حذف دور أيتام</a>
+            <a href="DeleteOrphanage.aspx">حذف دور أيتام</a>
         </div>
-    </div>"
+    </div>
     <div class="list-container">
         <asp:PlaceHolder ID="orphanagesList" runat="server">
 
