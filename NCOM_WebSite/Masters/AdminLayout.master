@@ -1,0 +1,23 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Masters/MasterPage.master" AutoEventWireup="true" CodeFile="AdminLayout.master.cs" Inherits="Masters_AdminLayout" %>
+
+<asp:Content ID="adminLayoutHead" ContentPlaceHolderID="headContent" Runat="Server">
+    <link href="Style/Navbar.css" rel="stylesheet" />
+
+    <asp:ContentPlaceHolder ID="headContent" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="adminLayoutBody" ContentPlaceHolderID="bodyContent" Runat="Server">
+    <nav>
+        <ul>
+            <li><a href="UserManageement.aspx">إدارة المستخدمين</a></li>
+            <li><a href="OrphanageManagement.aspx">إدارة دور الأيتام</a></li>
+            <li><a href="Reports.aspx">التقارير</a></li>
+            <li id="nav-button"><a href="#">تسجيل خروج</a></li>
+        </ul>
+    </nav>
+
+    <asp:ContentPlaceHolder ID="bodyContent" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+

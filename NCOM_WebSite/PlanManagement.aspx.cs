@@ -3,6 +3,8 @@ using System.Data;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
+
 
 public partial class Manager : System.Web.UI.Page
 {
@@ -19,12 +21,16 @@ public partial class Manager : System.Web.UI.Page
             {
                 sqlCommand.Connection = sqlConnection;
                 sqlCommand.CommandText = String.Format("SELECT id FROM [dbo].[Orphanage] WHERE manager_id = {0}", user_id);
-                
+
                 orphanage_id = int.Parse(sqlCommand.ExecuteScalar().ToString());
                 DataTable dataTable = new DataTable();
                 using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(String.Format("SELECT * FROM [dbo].[Plan] WHERE orphanage_id = {0}", orphanage_id), sqlConnection))
                 {
                     sqlDataAdapter.Fill(dataTable);
+                }
+                if (dataTable.Rows.Count == 0)
+                {
+                    Response.Redirect("NoPlans.aspx");
                 }
                 foreach (DataRow dataRow in dataTable.Rows)
                 {
@@ -32,7 +38,7 @@ public partial class Manager : System.Web.UI.Page
                     using (SqlCommand readAmountColleected = new SqlCommand())
                     {
                         readAmountColleected.CommandText = String.Format("SELECT SUM(amount) FROM [dbo].[Donation]" +
-                                              "WHERE donation_collected = 1 AND plan_id = {0}", dataRow["id"]);
+                                                "WHERE donation_collected = 1 AND plan_id = {0}", dataRow["id"]);
                         readAmountColleected.Connection = sqlConnection;
                         try
                         {
@@ -72,12 +78,18 @@ public partial class Manager : System.Web.UI.Page
                     deleteButton.Attributes.Add("PlanId", dataRow["id"].ToString());
                     deleteButton.OnClientClick = "if (confirm('سيؤدي ذلك إلى حذف الحملة نهائيا. استمرار ؟')) this.Click(); else return false;";
 
+                    HtmlForm form = new HtmlForm();
+                    form.Method = "POST";
+                    form.Attributes["runAt"] = "server";
+                    form.Attributes["AutoPostBack"] = "false";
+                    form.Controls.Add(deleteButton);
+
                     Panel listItem = new Panel();
                     listItem.CssClass = "list-item";
                     listItem.Controls.Add(itemName);
                     listItem.Controls.Add(itemDescription);
                     listItem.Controls.Add(info);
-                    listItem.Controls.Add(deleteButton);
+                    listItem.Controls.Add(form);
 
                     planList.Controls.Add(listItem);
                 }

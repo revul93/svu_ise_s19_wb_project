@@ -1,0 +1,25 @@
+﻿body {
+    background-color: honeydew;
+}
+
+.content {
+    margin-top: 15vh;
+    margin-bottom: 15vh;
+    align-self: center;
+    justify-self: center;
+    max-width: 750px;
+    border: 2px solid lightgrey;
+    border-radius: 15px;
+    background-color: wheat;
+    padding: 5vh;
+    font-size: 20px;
+    text-decoration: none;
+    text-align: center;
+    color: black;
+}
+
+.img {
+    width: 40%;
+    min-width: 200px;
+    margin-bottom: 50px;
+}

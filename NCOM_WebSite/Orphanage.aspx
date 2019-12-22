@@ -3,6 +3,7 @@
 <asp:Content ID="headConetent" ContentPlaceHolderID="headContent" Runat="Server">
     <link href="Style/list.css" rel="stylesheet" />
     <link href="Style/Orphanage.css" rel="stylesheet" />
+    <link href="Style/OrphanageManagement.css" rel="stylesheet" />
 </asp:Content>
 
 

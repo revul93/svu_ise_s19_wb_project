@@ -6,11 +6,15 @@
 
 
 <asp:Content ID="bodyContent" ContentPlaceHolderID="bodyContent" Runat="Server">
-    <form id="form1" runat="server">
+    <div class="link-list">
+        <div class="link-list-item">
+            <a href="AddPlan.aspx">إضافة حملة</a>
+        </div>
+    </div>
+
     <div class="list-container">
         <asp:PlaceHolder ID="planList" runat="server">
             
         </asp:PlaceHolder>
     </div>
-    </form>
 </asp:Content>

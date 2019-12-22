@@ -3,6 +3,8 @@ using System.Data;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
+
 
 public partial class DonationManagement : System.Web.UI.Page
 {
@@ -11,7 +13,7 @@ public partial class DonationManagement : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        user_id = 2;
+        user_id = 3;
         using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLDBConnection"].ToString()))
         {
             sqlConnection.Open();
@@ -25,8 +27,8 @@ public partial class DonationManagement : System.Web.UI.Page
                 DataTable dataTable = new DataTable();
                 using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(String.Format(
                     "SELECT [Donor].[name] AS donorName, [Donor].[mobile] AS donorMobile, [Donor].[email] AS donorEmail, " +
-                    "CONCAT([Donor].[address_city], ',', [Donor].[address_street], ',', [Donor].[address_description]) AS donorAddress, " +
-                    "[Donation].[amount] As donationAmount, [Donation].[method] AS donationMethod, " +
+                    "CONCAT([Donor].[address_city], ', ', [Donor].[address_street], ', ', [Donor].[address_description]) AS donorAddress, " +
+                    "[Donation].[Id] As donationId, [Donation].[amount] As donationAmount, [Donation].[method] AS donationMethod, " +
                     "[Donation].[donor_contacted] AS donorContacted, [Donation].[donation_collected] donationCollected, " +
                     "[Plan].[name] AS planName " +
                     "FROM [dbo].[Donor] " +
@@ -39,33 +41,89 @@ public partial class DonationManagement : System.Web.UI.Page
 
                 if (dataTable.Rows.Count == 0)
                 {
-
+                    Response.Redirect("NoDonation.aspx");
                 }
                 else
                 {
                     foreach (DataRow dataRow in dataTable.Rows)
                     {
-                        donationList.Controls.Add(new Literal()
+                        Panel listItem = new Panel();
+                        listItem.CssClass = "list-item";
+
+                        Label planName = new Label
                         {
-                            Text = String.Format(
-                                "<div class=\"list-item\">\n" +
-                                "\t<p>\n" +
-                                "\t\t<span class=\"item-name\">{0}</span><br />" +
-                                "\t\tDonor Name: {1}<br />\n" +
-                                "\t\tDonation method: {2}<br />\n" +
-                                "\t\tAmount: {3}<br />\n" +
-                                "\t\tDonor Address: {4}<br />\n" +
-                                "\t\tDonor Mobile: {5}<br />\n" +
-                                "\t\tDonor Email: {6}<br />\n" +
-                                "\t</p>\n" +
-                                "</div>\n",
-                                dataRow["planName"], dataRow["donorName"], dataRow["donationMethod"], dataRow["donationAmount"],
-                                dataRow["donorAddress"], dataRow["donorMobile"], dataRow["donorEmail"]
-                            )
+                            Text = dataRow["planName"].ToString(),
+                            CssClass = "item-name"
+                        };
+                        Label donorName = new Label
+                        {
+                            Text = "اسم المتبرع: " + dataRow["donorName"].ToString(),
+                            CssClass = "info"
+                        };
+                        Label donationMethod = new Label
+                        {
+                            Text = "طريقة التبرع: " + ( 
+                            dataRow["donationMethod"].ToString() == "physical" ? "عيني" :
+                            dataRow["donationMethod"].ToString() == "cash" ? "نقدي" :
+                            dataRow["donationMethod"].ToString() == "cheque" ? "شيك" : "حوالة مصرفية"),
+                            CssClass = "info"
+                        };
+                        Label donationAmount = new Label
+                        {
+                            Text = "الكمية: " + dataRow["donationAmount"].ToString(),
+                            CssClass = "info"
+                        };
+                        Label donorAddress = new Label
+                        {
+                            Text = "طريقة التبرع: " + dataRow["donorAddress"].ToString(),
+                            CssClass = "info"
+                        };
+
+                        CheckBox donorContacted = new CheckBox();
+                        donorContacted.Attributes["donationId"] = dataRow["donationId"].ToString();
+                        donorContacted.Checked = bool.Parse(dataRow["donorContacted"].ToString());
+                        donorContacted.Text = "تم التواصل مع المتبرع.";
+                        donorContacted.CheckedChanged += this.IsContacted;
+
+                        CheckBox donationCollected = new CheckBox();
+                        donationCollected.Attributes["donationId"] = dataRow["donationId"].ToString();
+                        donationCollected.Checked = bool.Parse(dataRow["donationCollected"].ToString());
+                        donationCollected.Text = "تم استلام التبرع.";
+                        donorContacted.CheckedChanged += this.IsCollected;
+
+
+                        listItem.Controls.Add(planName);
+                        listItem.Controls.Add(donorName);
+                        listItem.Controls.Add(donationMethod);
+                        listItem.Controls.Add(donationAmount);
+                        listItem.Controls.Add(donorAddress);
+                        listItem.Controls.Add(new Literal
+                        {
+                            Text = String.Format("<span class=\"info\">الهاتف: <a href=\"tel:{0}\">{0}</a></span>",
+                                                    dataRow["donorMobile"])
                         });
+                        listItem.Controls.Add(new Literal
+                        {
+                            Text = String.Format("<span class=\"info\">البريد الإلكتروني: <a href=\"mailto:{0}\">{0}</a></span>",
+                            dataRow["donorEmail"])
+                        });
+                        listItem.Controls.Add(new Literal { Text = "<hr />"});
+                        listItem.Controls.Add(donorContacted);
+                        listItem.Controls.Add(donationCollected);
+                        donationList.Controls.Add(listItem);
                     }
                 }
             }
         }
+    }
+
+    protected void IsContacted(object sender, EventArgs e)
+    {
+        
+    }
+
+    protected void IsCollected(object sender, EventArgs e)
+    {
+        
     }
 }

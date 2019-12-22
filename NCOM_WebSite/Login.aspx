@@ -10,10 +10,7 @@
         <section class="cover">
             <div class="elements">
                 <asp:TextBox ID="usernameTextBox" CssClass="txt1 txtstyle" placeholder="اسم المستخدم" runat="server"></asp:TextBox>
-                <!--<asp:RequiredFieldValidator ID="usernameValidator" runat="server" ControlToValidate="usernameTextBox" ErrorMessage="يرجى إدخال اسم المستخدم" CssClass="validation"></asp:RequiredFieldValidator>-->
-                
                 <asp:TextBox ID="passwordTextBox" CssClass="txt2 txtstyle" placeholder="كلمة السر" TextMode="Password" runat="server"></asp:TextBox>
-                <!--<asp:RequiredFieldValidator ID="passwordValidator" runat="server" ControlToValidate="passwordTextBox" ErrorMessage="يرجى إدخال كلمة السر" CssClass="validation"></asp:RequiredFieldValidator>-->
                 <asp:Button ID="loginButton" CssClass="btn1 btnstyle" runat="server" Text="تسجيل دخول" OnClick="loginButton_Click" />
             </div>
         </section>

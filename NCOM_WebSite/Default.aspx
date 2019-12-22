@@ -69,8 +69,12 @@
                 <asp:Label class="info-data" runat="server" ID="totalDonations"></asp:Label><br />
             </div>
         </div>
-        <asp:Label class="defenetion" text= "شتاؤهم أدفأ بعطائكم" runat="server"  ID="Label1"></asp:Label>
-        <a id="donate-button" href="Donate.aspx">من أجلهم تبرع الآن!</a>
+    </section>
+    <section>
+        <div class="donate">
+            <asp:Label class="defenetion" text= "شتاؤهم أدفأ بعطائكم" runat="server"  ID="Label1"></asp:Label>
+            <a id="donate-button" href="Donate.aspx">من أجلهم تبرع الآن!</a>
+        </div>
     </section>
     </div>
 </asp:Content>

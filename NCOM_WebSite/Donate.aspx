@@ -29,6 +29,7 @@
             <asp:ListItem>حمص</asp:ListItem>
             <asp:ListItem>اللاذقية</asp:ListItem>
             <asp:ListItem>حماة</asp:ListItem>
+            <asp:ListItem>ادلب</asp:ListItem>
             <asp:ListItem>طرطوس</asp:ListItem>
             <asp:ListItem>الرقة</asp:ListItem>
             <asp:ListItem>دير الزور</asp:ListItem>
