@@ -64,7 +64,7 @@ public partial class Donate : System.Web.UI.Page
     {
         InitiatePlanDropDownList();
         InitiateMethodDropDownList();
-        if ( int.Parse(orphanageDropDownList.SelectedValue) > 0)
+        if (int.Parse(orphanageDropDownList.SelectedValue) > 0)
         {
             ConnectDB();
             sqlCommand.CommandText = String.Format("SELECT id, name, description FROM [dbo].[Plan] WHERE orphanage_id = {0};",
@@ -72,7 +72,11 @@ public partial class Donate : System.Web.UI.Page
             dataReader = sqlCommand.ExecuteReader();
             while (dataReader.Read())
             {
-                planDropDownList.Items.Add(new ListItem(dataReader["name"].ToString(), dataReader["id"].ToString()));
+                ListItem listItem = new ListItem();
+                listItem.Text = dataReader["name"].ToString();
+                listItem.Value = dataReader["id"].ToString();
+                listItem.Attributes["title"] = dataReader["description"].ToString() ;
+                planDropDownList.Items.Add(listItem);
             }
             sqlConnection.Close();
         }
@@ -83,6 +87,9 @@ public partial class Donate : System.Web.UI.Page
         if (int.Parse(planDropDownList.SelectedValue) > 0)
         {
             ConnectDB();
+            sqlCommand.CommandText = String.Format("SELECT amount_required FROM [dbo].[Plan] WHERE Id = {0};", planDropDownList.SelectedValue);
+            amountRangeValidator.MaximumValue = sqlCommand.ExecuteScalar().ToString();
+
             sqlCommand.CommandText = String.Format("SELECT type FROM [dbo].[Plan] WHERE id = {0};",
                                                             int.Parse(planDropDownList.SelectedValue));
             dataReader = sqlCommand.ExecuteReader();
@@ -97,7 +104,6 @@ public partial class Donate : System.Web.UI.Page
                 methodDropDownList.Items.Add(new ListItem("شيك", "cheque"));
                 methodDropDownList.Items.Add(new ListItem("حوالة مصرفية", "bankTransfer"));
             }
-
             dataReader.Close();
             sqlConnection.Close();
         }
@@ -105,21 +111,24 @@ public partial class Donate : System.Web.UI.Page
 
     protected void submitButton_Click(object sender, EventArgs e)
     {
-        ConnectDB();
-        sqlCommand.CommandText = String.Format("INSERT INTO [dbo].[Donor] ([name], [address_City], [address_Street], " +
-                                    "[address_description], [mobile], [email]) " +
-                                    "VALUES(N'{0}', N'{1}', N'{2}', N'{3}', '{4}', '{5}');" +
-                                    "SELECT CAST(SCOPE_IDENTITY() As int)",
-                                nameTextBox.Text, cityDropDownList.SelectedValue, streetTextBox.Text, addressTextBox.Text, mobileTextBox.Text, emailTextBox.Text);
-        int donor_id = (int.Parse(sqlCommand.ExecuteScalar().ToString()));
-        sqlCommand.CommandText = "SELECT SCOPE_IDENTITY();";
-        int donorId = Convert.ToInt32(sqlCommand.ExecuteScalar());
+        if (Page.IsValid)
+        {
+            ConnectDB();
+            sqlCommand.CommandText = String.Format("INSERT INTO [dbo].[Donor] ([name], [address_City], [address_Street], " +
+                                        "[address_description], [mobile], [email]) " +
+                                        "VALUES(N'{0}', N'{1}', N'{2}', N'{3}', '{4}', '{5}');" +
+                                        "SELECT CAST(SCOPE_IDENTITY() As int)",
+                                    nameTextBox.Text, cityDropDownList.SelectedValue, streetTextBox.Text, addressTextBox.Text, mobileTextBox.Text, emailTextBox.Text);
 
-        sqlCommand.CommandText = String.Format("INSERT INTO [dbo].[Donation] ([donor_id], [plan_id], [amount], [method]) " +
-                                     "VALUES('{0}', '{1}', '{2}', N'{3}'); SELECT CAST(SCOPE_IDENTITY() AS int)",
-                                     donorId, planDropDownList.SelectedValue, int.Parse(amountTextBox.Text), methodDropDownList.SelectedValue);
-        if (Convert.ToInt32(sqlCommand.ExecuteScalar()) > 0) {
-            Response.Redirect("Thanks.aspx");
+            int donorId = Convert.ToInt32(sqlCommand.ExecuteScalar());
+
+            sqlCommand.CommandText = String.Format("INSERT INTO [dbo].[Donation] ([donor_id], [plan_id], [amount], [method]) " +
+                                         "VALUES('{0}', '{1}', '{2}', N'{3}'); SELECT CAST(SCOPE_IDENTITY() AS int)",
+                                         donorId, planDropDownList.SelectedValue, int.Parse(amountTextBox.Text), methodDropDownList.SelectedValue);
+            if (Convert.ToInt32(sqlCommand.ExecuteScalar()) > 0)
+            {
+                Response.Redirect("Thanks.aspx");
+            }
         }
     }
 }

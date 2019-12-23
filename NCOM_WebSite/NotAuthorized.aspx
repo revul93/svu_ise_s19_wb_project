@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/DefaultLayout.master" AutoEventWireup="true" CodeFile="NotAuthorized.aspx.cs" Inherits="NotAuthorized" %>
+﻿<%@ Page Title="خطأ وصول" Language="C#" MasterPageFile="~/Masters/DefaultLayout.master" AutoEventWireup="true" CodeFile="NotAuthorized.aspx.cs" Inherits="NotAuthorized" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="headContent" Runat="Server">
     <link href="Style/SingleContent.css" rel="stylesheet" />

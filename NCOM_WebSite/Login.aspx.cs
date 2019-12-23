@@ -17,33 +17,31 @@ public partial class Login : System.Web.UI.Page
 
     protected void loginButton_Click(object sender, EventArgs e)
     {
-        if (usernameTextBox.Text.Equals(String.Empty) || passwordTextBox.Text.Equals(String.Empty))
+        sqlCommand.CommandText = String.Format("SELECT * FROM [dbo].[User] WHERE username = '{0}';", usernameTextBox.Text);
+        dataRead = sqlCommand.ExecuteReader();
+        if (dataRead.Read())
         {
-            return;
-        }
-        else
-        {
-            sqlCommand.CommandText = String.Format("SELECT * FROM [dbo].[User] WHERE username = '{0}';", usernameTextBox.Text);
-            dataRead = sqlCommand.ExecuteReader();
-            if (dataRead.Read())
+            if (dataRead["password"].ToString().Equals(passwordTextBox.Text))
             {
-                if (dataRead["password"].ToString().Equals(passwordTextBox.Text))
+                if (bool.Parse(dataRead["is_admin"].ToString()))
                 {
-                    if (!bool.Parse(dataRead["is_admin"].ToString()))
-                    {
-                        Response.Redirect("PlanManagement.aspx");
-                    }
-                    else
-                    {
-                        Response.Redirect("OrphanageManagement.aspx");
-                    }
+                    Response.Redirect("OrphanageManagement.aspx");
+                }
+                else
+                {
+                    Response.Redirect("PlanManagement.aspx");
                 }
             }
             else
             {
+                Response.Write("<script>alert('كلمة السر غير صحيحة!')</script>");
                 return;
             }
         }
-        
+        else
+        {
+            Response.Write("<script>alert('اسم المستخدم غير موجود')</script>");
+            return;
+        }
     }
 }

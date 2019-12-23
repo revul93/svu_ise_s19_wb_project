@@ -32,6 +32,7 @@ public partial class Manager : System.Web.UI.Page
                 {
                     Response.Redirect("NoPlans.aspx");
                 }
+
                 foreach (DataRow dataRow in dataTable.Rows)
                 {
                     int amountCollectedValue;

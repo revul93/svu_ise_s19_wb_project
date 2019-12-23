@@ -19,6 +19,7 @@ public partial class OrphanageManagement : System.Web.UI.Page
                     sqlDataAdapter.Fill(dataTable);
                 }
             }
+
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 orphanagesList.Controls.Add(new Literal()
@@ -35,7 +36,6 @@ public partial class OrphanageManagement : System.Web.UI.Page
                     "<span class=\"info\"><i class=\"fas fa-at\"></i><a href=\"mailto:{9}\">{9}</a><br /></span>\n" +
                     "</address>\n" +
                     "<iframe frameborder=\"0\" src=\"https://www.google.com/maps/embed/v1/view?key=AIzaSyDtAg4hm3DCht1NFjtO3UbPtP1rtShz-cs&center={10}&zoom=15\" allowfullscreen></iframe>" +
-                    "<hr />\n" +
                     "</div>\n",
 
                         dataRow["name"], dataRow["logo"], dataRow["description"], dataRow["capacity"], dataRow["sponsored_orphans"],

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="إدارة الحملات التبرعية" Language="C#" MasterPageFile="~/Masters/ManagerLayout.master" AutoEventWireup="true" CodeFile="DonationManagement.aspx.cs" Inherits="DonationManagement" %>
+﻿<%@ Page Title="إدارة التبرعات" Language="C#" MasterPageFile="~/Masters/ManagerLayout.master" AutoEventWireup="true" CodeFile="DonationManagement.aspx.cs" Inherits="DonationManagement" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="headContent" Runat="Server">
     <link href="Style/list.css" rel="stylesheet" />

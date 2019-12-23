@@ -2,7 +2,7 @@
     background-color: honeydew;
 }
 
-form {
+.form-container {
     background-color: white;
     font-size: 18px;
     display: flex;
@@ -12,7 +12,7 @@ form {
     margin: 50px auto;
     max-width: 800px;
     border: 1px solid lightgrey;
-    border-radius: 10px;
+    border-radius: 15px;
     padding: 25px;
 }
 

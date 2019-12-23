@@ -30,7 +30,7 @@
     </section> 
 
     <section>
-        <asp:Label class="defenetion" text= "تعرف علينا" runat="server"  ID="Label2"></asp:Label>
+        <asp:Label class="definition" text= "تعرف علينا" runat="server"></asp:Label>
         <div class="items-container ">
             <div class="items">
                 <p class="aboutUsItemTitle">من نحن</p>
@@ -49,6 +49,7 @@
             </div>
         </div>
     </section>
+
     <section>
         <div class="items-container">
             <div class="items">
@@ -69,9 +70,10 @@
             </div>
         </div>
     </section>
+
     <section>
         <div class="donate">
-            <asp:Label class="defenetion" text= "شتاؤهم أدفأ بعطائكم" runat="server"  ID="Label1"></asp:Label>
+            <asp:Label class="definition" text= "شتاؤهم أدفأ بعطائكم" runat="server"  ID="Label1"></asp:Label>
             <a id="donate-button" href="Donate.aspx">من أجلهم تبرع الآن!</a>
         </div>
     </section>

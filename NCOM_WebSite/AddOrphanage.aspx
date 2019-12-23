@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="bodyContent" ContentPlaceHolderID="bodyContent" Runat="Server">
-    <form method="post" runat="server">
+    <form method="post" runat="server" class="form-container">
         <asp:Label runat="server" CssClass="required">الإسم: </asp:Label>
         <asp:TextBox ID="nameTextBox" runat="server" CssClass="form-control" ></asp:TextBox>
         <asp:RequiredFieldValidator CssClass="validation" ErrorMessage="الرجاء إدخال اسم الدار" ControlToValidate="nameTextBox" runat="server"></asp:RequiredFieldValidator>

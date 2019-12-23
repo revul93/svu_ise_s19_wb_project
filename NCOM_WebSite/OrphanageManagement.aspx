@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminLayout.master" AutoEventWireup="true" CodeFile="OrphanageManagement.aspx.cs" Inherits="OrphanageManagement" %>
+﻿<%@ Page Title="إدارة دور الأيتام" Language="C#" MasterPageFile="~/Masters/AdminLayout.master" AutoEventWireup="true" CodeFile="OrphanageManagement.aspx.cs" Inherits="OrphanageManagement" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="headContent" Runat="Server">
     <link href="Style/List.css" rel="stylesheet" />
@@ -19,8 +19,8 @@
     </div>
     <div class="list-container">
         <asp:PlaceHolder ID="orphanagesList" runat="server">
-
         </asp:PlaceHolder>
+
     </div>
 </asp:Content>
 

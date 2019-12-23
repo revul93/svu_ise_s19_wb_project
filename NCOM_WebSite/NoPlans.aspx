@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/ManagerLayout.master" AutoEventWireup="true" CodeFile="NoPlans.aspx.cs" Inherits="NoPlans" %>
+﻿<%@ Page Title="الحملات التبرعية" Language="C#" MasterPageFile="~/Masters/ManagerLayout.master" AutoEventWireup="true" CodeFile="NoPlans.aspx.cs" Inherits="NoPlans" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="headContent" Runat="Server">
     <link href="Style/SingleContent.css" rel="stylesheet" />
