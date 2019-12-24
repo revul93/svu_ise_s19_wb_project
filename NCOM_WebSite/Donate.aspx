@@ -25,7 +25,7 @@
         
         <asp:Label runat="server" CssClass="required"> الإسم: </asp:Label>
         <asp:TextBox ID="nameTextBox" runat="server" CssClass="form-control"></asp:TextBox>
-        <asp:RequiredFieldValidator runat="server" ControlToValidate="nameTextBox" ErrorMessage="يرجى إدخال الاسم"></asp:RequiredFieldValidator>
+        <asp:RequiredFieldValidator runat="server" ControlToValidate="nameTextBox" ErrorMessage="يرجى إدخال الاسم" CssClass="validation"></asp:RequiredFieldValidator>
 
         <asp:Label runat="server" CssClass="required"> المحافظة: </asp:Label>
         <asp:DropDownList ID="cityDropDownList" runat="server" CssClass="form-control">

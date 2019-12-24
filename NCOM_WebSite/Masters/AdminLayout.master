@@ -13,7 +13,7 @@
             <li><a href="../UserManagement.aspx">إدارة المستخدمين</a></li>
             <li><a href="../OrphanageManagement.aspx">إدارة دور الأيتام</a></li>
             <li><a href="../Reports.aspx">التقارير</a></li>
-            <li id="nav-button"><a href="#">تسجيل خروج</a></li>
+            <li id="nav-button"><a href="Default.aspx">تسجيل خروج</a></li>
         </ul>
     </nav>
 

@@ -44,7 +44,7 @@ public partial class AddOrphanage : System.Web.UI.Page
                         nameTextBox.Text, "Images/Orphanages/" + logoFileUpload.FileName, descriptionTextBox, 
                         cityDropDownList.SelectedValue, streetTextBox.Text, addressDescriptionTextBox.Text,
                         coordinateTextBox.Text, emailTextBox.Text, telephoneTextBox.Text,
-                        capacityTextBox.Text, sponsoredORphansTextBox.Text, managerDropDownList.SelectedValue);
+                        capacityTextBox.Text, sponsoredOrphansTextBox.Text, managerDropDownList.SelectedValue);
                     
                     int orphanage_id = Convert.ToInt32(sqlCommand.ExecuteScalar());
                     logoFileUpload.SaveAs(Server.MapPath("~/Images/Orphanages/" + logoFileUpload.FileName));

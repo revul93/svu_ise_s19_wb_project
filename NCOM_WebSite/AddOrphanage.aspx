@@ -56,7 +56,7 @@
         <asp:TextBox ID="capacityTextBox" runat="server" CssClass="form-control" TextMode="Number" ></asp:TextBox>
 
         <asp:Label runat="server">عدد الأيتام المكفولين: </asp:Label>
-        <asp:TextBox ID="sponsoredORphansTextBox" runat="server" CssClass="form-control" TextMode="Number" ></asp:TextBox>
+        <asp:TextBox ID="sponsoredOrphansTextBox" runat="server" CssClass="form-control" TextMode="Number" ></asp:TextBox>
 
         <asp:Label runat="server" CssClass="required"> مسؤول الدار: </asp:Label>
         <asp:DropDownList ID="managerDropDownList" runat="server" CssClass="form-control"></asp:DropDownList>
