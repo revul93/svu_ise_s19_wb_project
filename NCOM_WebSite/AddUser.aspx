@@ -27,24 +27,20 @@
         <asp:RequiredFieldValidator CssClass="validation" ErrorMessage="الرجاء إدخال أسم السمتخدم" ControlToValidate="usernameTextBox" runat="server"></asp:RequiredFieldValidator>
 
         <asp:Label runat="server" CssClass="required">كلمة السر: </asp:Label>
-        <asp:TextBox ID="passswordTextBox" runat="server" CssClass="form-control" TextMode="Password" ></asp:TextBox>
-        <asp:RequiredFieldValidator CssClass="validation" ErrorMessage="الرجاء ادخال كلمة السر" ControlToValidate="passswordTextBox" runat="server"></asp:RequiredFieldValidator>
+        <asp:TextBox ID="passwordTextBox" runat="server" CssClass="form-control" TextMode="Password" ></asp:TextBox>
+        <asp:RequiredFieldValidator CssClass="validation" ErrorMessage="الرجاء ادخال كلمة السر" ControlToValidate="passwordTextBox" runat="server"></asp:RequiredFieldValidator>
 
 
         <asp:Label runat="server" CssClass="required">تأكيد كلمة السر: </asp:Label>
         <asp:TextBox ID="confirmTextBox" runat="server" CssClass="form-control" TextMode="Password" ></asp:TextBox>
         <asp:RequiredFieldValidator CssClass="validation" ErrorMessage="الرجاء تأكيد كلمة السر" ControlToValidate="confirmTextBox" runat="server"></asp:RequiredFieldValidator>
+        <asp:CompareValidator CssClass="validation" runat="server" ControlToCompare="passwordTextBox" ControlToValidate="confirmTextBox" ErrorMessage="كلمة السر غير متطابقة"></asp:CompareValidator>
 
-        <label>
-            <asp:CheckBox runat="server" ID="isAdminCheckBox" />
-            مدير نظام ؟
-        </label>
+        <asp:Label runat="server" CssClass="required">دار الأيتام المسؤول عنها: </asp:Label>
+        <asp:DropDownList runat="server" ID="orphanageDropDownList" CssClass="form-control"></asp:DropDownList>
+        <asp:RequiredFieldValidator runat="server" ControlToValidate="orphanageDropDownList" CssClass="validation" ErrorMessage="يرجى اختيار دار الأيتام المسؤول عنها المستخدم"></asp:RequiredFieldValidator>
 
         <asp:Button ID="submitButton" runat="server" Text="تسجيل المستخدم" OnClick="submitButton_Click" CssClass="form-control button-control" />
     </form>
-
-    <script>
-
-    </script>
 </asp:Content>
 

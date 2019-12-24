@@ -16,6 +16,12 @@
     padding: 25px;
 }
 
+.form-panel {
+    border: 1px solid black;
+    border-radius: 15px;
+    margin: 20px auto;
+}
+
 .form-control {
     width: 85%;
     padding: 5px;

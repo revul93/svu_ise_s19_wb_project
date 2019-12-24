@@ -54,28 +54,6 @@ public partial class EditOrphanage : System.Web.UI.Page
                 capacityTextBox.Text = orphanageRow["capacity"].ToString();
                 sponsoredOrphansTextBox.Text = orphanageRow["sponsored_orphans"].ToString();
             }
-
-            managerDropDownList.Items.Clear();
-            using (SqlCommand sqlCommand = new SqlCommand())
-            {
-                sqlCommand.Connection = sqlConnection;
-                sqlCommand.CommandText = String.Format("SELECT id, name, orphanage_id FROM [dbo].[User] WHERE orphanage_id IS NULL OR orphanage_id = {0};",
-                    int.Parse(orphanageDropDownList.SelectedValue));
-                SqlDataReader users = sqlCommand.ExecuteReader();
-                while(users.Read())
-                {
-                    ListItem listItem = new ListItem
-                    {
-                        Text = users["name"].ToString(),
-                        Value = users["id"].ToString()
-                    };
-                    if (users["orphanage_id"].ToString().Equals(orphanageDropDownList.SelectedValue))
-                    {
-                        listItem.Attributes["selected"] = "selected";
-                    }
-                    managerDropDownList.Items.Add(listItem);
-                }
-            }
         }
     }
 
@@ -84,26 +62,10 @@ public partial class EditOrphanage : System.Web.UI.Page
         using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLDBConnection"].ToString()))
         {
             sqlConnection.Open();
-            SqlDataReader dataReader;
             using (SqlCommand sqlCommand = new SqlCommand())
             {
                 sqlCommand.Connection = sqlConnection;
-                sqlCommand.CommandText = String.Format("SELECT * FROM [dbo].[Orphanage] WHERE id = {0};", orphanageDropDownList.SelectedValue);
-                dataReader = sqlCommand.ExecuteReader();
-                dataReader.Read();
-                int orphanage_id = int.Parse(dataReader["id"].ToString());
-                int manager_id = int.Parse(dataReader["manager_id"].ToString());
-                dataReader.Close();
-
-                sqlCommand.CommandText = String.Format("UPDATE [dbo].[User] SET orphanage_id = '' WHERE id = {0};", manager_id);
-                try
-                {
-                    sqlCommand.ExecuteScalar();
-                }
-                catch (SqlException) { 
-                    
-                };
-                sqlCommand.CommandText = String.Format("DELETE FROM [dbo].[Orphanage] WHERE id = {0};", orphanage_id);
+                sqlCommand.CommandText = String.Format("DELETE FROM [dbo].[Orphanage] WHERE id = {0};", orphanageDropDownList.SelectedValue);
                 sqlCommand.ExecuteScalar();
                 Response.Redirect(Request.RawUrl.ToString());
             }
@@ -132,19 +94,14 @@ public partial class EditOrphanage : System.Web.UI.Page
                         "telephone = '{7}', " +
                         "email = '{8}', " +
                         "capacity = '{9}', " +
-                        "sponsored_orphans = '{10}'," +
-                        "manager_id = {11} " +
-                        "WHERE id = {12};" +
+                        "sponsored_orphans = '{10}' " +
+                        "WHERE id = {11};" +
                         "SELECT CAST(SCOPE_IDENTITY() AS int);",
                         nameTextBox.Text, descriptionTextBox.Text, logoFileUpload.FileName,
                         cityTextBox.Text, streetTextBox.Text, addressDescriptionTextBox.Text, coordinateTextBox.Text,
                         telephoneTextBox.Text, emailTextBox.Text, int.Parse(capacityTextBox.Text), int.Parse(sponsoredOrphansTextBox.Text),
-                        int.Parse(managerDropDownList.SelectedValue), int.Parse(orphanageDropDownList.SelectedValue)
+                        int.Parse(orphanageDropDownList.SelectedValue)
                     );
-                    sqlCommand.ExecuteScalar();
-
-                    sqlCommand.CommandText = String.Format("UPDATE [dbo].[User] SET orphanage_id = {0} WHERE id = {1};",
-                                                int.Parse(orphanageDropDownList.SelectedValue), int.Parse(managerDropDownList.SelectedValue));
                     sqlCommand.ExecuteScalar();
                     Response.Write("<script>alert('تم حفظ التعديلات بنجاح');</script>");
                 }

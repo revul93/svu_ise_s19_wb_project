@@ -21,11 +21,6 @@ public partial class Login : System.Web.UI.Page
         dataRead = sqlCommand.ExecuteReader();
         if (dataRead.Read())
         {
-            if (bool.Parse(dataRead["disabled"].ToString()))
-            {
-                Response.Write("<script>alert('المستخدم موقوف حاليا، يرجى التواصل مع مدير النظام')</script>");
-                return;
-            }
             if (dataRead["password"].ToString().Equals(passwordTextBox.Text))
             {
                 Session["user_id"] = dataRead["id"].ToString();

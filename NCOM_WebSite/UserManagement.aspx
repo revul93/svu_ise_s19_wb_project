@@ -12,9 +12,6 @@
         <div class="link-list-item">
             <a href="EditUser.aspx">تعديل مستخدم</a>
         </div>
-        <div class="link-list-item">
-            <a href="DeleteUser.aspx">حذف مستخدم</a>
-        </div>
     </div>"
     <div class="list-container">
         <asp:PlaceHolder ID="usersList" runat="server">

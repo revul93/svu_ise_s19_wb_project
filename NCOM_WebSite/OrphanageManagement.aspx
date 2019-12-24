@@ -11,10 +11,7 @@
             <a href="AddOrphanage.aspx">إضافة دور أيتام</a>
         </div>
         <div class="link-list-item">
-            <a href="EditOrphanage.aspx">تعديل دور أيتام</a>
-        </div>
-        <div class="link-list-item">
-            <a href="DeleteOrphanage.aspx">حذف دور أيتام</a>
+            <a href="EditOrphanage.aspx">تعديل أو حذف دور أيتام</a>
         </div>
     </div>
     <div class="list-container">

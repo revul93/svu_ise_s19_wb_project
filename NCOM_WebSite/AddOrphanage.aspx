@@ -58,10 +58,6 @@
         <asp:Label runat="server">عدد الأيتام المكفولين: </asp:Label>
         <asp:TextBox ID="sponsoredOrphansTextBox" runat="server" CssClass="form-control" TextMode="Number" ></asp:TextBox>
 
-        <asp:Label runat="server" CssClass="required"> مسؤول الدار: </asp:Label>
-        <asp:DropDownList ID="managerDropDownList" runat="server" CssClass="form-control"></asp:DropDownList>
-        <asp:RequiredFieldValidator CssClass="validation" ErrorMessage="الرجاء اختيار مسؤول الدار" ControlToValidate="addressDescriptionTextBox" runat="server"></asp:RequiredFieldValidator>
-
         <asp:Button ID="submitButton" runat="server" Text="إضافة دار الأيتام" OnClick="submitButton_Click" CssClass="form-control button-control" />
     </form>
 </asp:Content>

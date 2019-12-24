@@ -130,5 +130,6 @@ public partial class Donate : System.Web.UI.Page
                 Response.Redirect("Thanks.aspx");
             }
         }
+        sqlConnection.Close();
     }
 }

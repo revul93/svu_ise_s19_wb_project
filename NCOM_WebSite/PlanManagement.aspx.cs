@@ -13,18 +13,22 @@ public partial class Manager : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        user_id = 3;
+        if (Session["user_id"] == null) {
+            Response.Redirect("NotAuthorized.aspx");
+            return;
+        }
+        user_id = int.Parse(Session["user_id"].ToString());
         using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLDBConnection"].ToString()))
         {
             sqlConnection.Open();
             using (SqlCommand sqlCommand = new SqlCommand())
             {
                 sqlCommand.Connection = sqlConnection;
-                sqlCommand.CommandText = String.Format("SELECT id FROM [dbo].[Orphanage] WHERE manager_id = {0}", user_id);
-
+                sqlCommand.CommandText = String.Format("SELECT orphanage_id FROM [dbo].[User] WHERE id = {0};", user_id);
                 orphanage_id = int.Parse(sqlCommand.ExecuteScalar().ToString());
+
                 DataTable dataTable = new DataTable();
-                using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(String.Format("SELECT * FROM [dbo].[Plan] WHERE orphanage_id = {0}", orphanage_id), sqlConnection))
+                using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(String.Format("SELECT * FROM [dbo].[Plan] WHERE orphanage_id = {0};", orphanage_id), sqlConnection))
                 {
                     sqlDataAdapter.Fill(dataTable);
                 }
@@ -70,20 +74,10 @@ public partial class Manager : System.Web.UI.Page
                             dataRow["type"].ToString().Equals("cash") ? "نقدي" : "عيني", dataRow["amount_required"], amountCollectedValue)
                     };
 
-                    Button deleteButton = new Button
-                    {
-                        Text = "حذف الحملة",
-                        CssClass = "delete-button"
-                    };
-                    deleteButton.Click += this.DeletePlan;
-                    deleteButton.Attributes.Add("PlanId", dataRow["id"].ToString());
-                    deleteButton.OnClientClick = "if (confirm('سيؤدي ذلك إلى حذف الحملة نهائيا. استمرار ؟')) this.Click(); else return false;";
-
                     HtmlForm form = new HtmlForm();
                     form.Method = "POST";
                     form.Attributes["runAt"] = "server";
                     form.Attributes["AutoPostBack"] = "false";
-                    form.Controls.Add(deleteButton);
 
                     Panel listItem = new Panel();
                     listItem.CssClass = "list-item";
@@ -96,29 +90,5 @@ public partial class Manager : System.Web.UI.Page
                 }
             }
         }
-    }
-
-    protected void DeletePlan(object sender, EventArgs e)
-    {
-        Button temp = (Button)sender;
-        using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLDBConnection"].ToString()))
-        {
-            sqlConnection.Open();
-            using (SqlCommand sqlCommand = new SqlCommand())
-            {
-                sqlCommand.Connection = sqlConnection;
-                sqlCommand.CommandText = String.Format("DELETE FROM [dbo].[Plan] WHERE id = {0}", int.Parse(temp.Attributes["PlanId"]));
-                try
-                {
-                    sqlCommand.ExecuteScalar();
-                }
-                catch (SqlException)
-                {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('لا يمكن حذف الحملة، يوجد تبرعات غير محصلة أو غير محذوفة')", true);
-                    return;
-                }
-            }
-        }
-        Response.Redirect(Request.RawUrl.ToString());
     }
 }

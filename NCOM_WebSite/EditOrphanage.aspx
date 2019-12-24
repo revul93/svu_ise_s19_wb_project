@@ -2,7 +2,6 @@
 
 <asp:Content ID="headContent" ContentPlaceHolderID="headContent" Runat="Server">
     <link href="Style/Form.css" rel="stylesheet" />
-    <link href="Style/editDeleteForm.css" rel="stylesheet" />
 </asp:Content>
 
 
@@ -12,7 +11,7 @@
             <asp:Label runat="server" CssClass="required">دار الأيتام</asp:Label>
             <asp:DropDownList runat="server" ID="orphanageDropDownList" CssClass="form-control" OnSelectedIndexChanged="orphanageDropDownList_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
             
-            <asp:Button ID="deleteButton" runat="server" CssClass="btn btn-danger btn-lg form-control" Text="حذف الدار" OnClick="deleteButton_Click" /> 
+            <asp:Button ID="deleteButton" runat="server" CssClass="btn btn-danger btn-lg form-control button-control" Text="حذف الدار" OnClick="deleteButton_Click" /> 
         </asp:panel>
 
         <asp:Panel ID="subPanel" runat="server" CssClass="form-container">
@@ -54,11 +53,7 @@
             <asp:Label runat="server">عدد الأيتام المكفولين: </asp:Label>
             <asp:TextBox ID="sponsoredOrphansTextBox" runat="server" CssClass="form-control" TextMode="Number" ></asp:TextBox>
 
-            <asp:Label runat="server" CssClass="required"> مسؤول الدار: </asp:Label>
-            <asp:DropDownList ID="managerDropDownList" runat="server" CssClass="form-control"></asp:DropDownList>
-            <asp:RequiredFieldValidator CssClass="validation" ErrorMessage="الرجاء اختيار مسؤول الدار" ControlToValidate="addressDescriptionTextBox" runat="server"></asp:RequiredFieldValidator>
-
-            <asp:Button ID="saveButton" runat="server" CssClass="btn btn-success btn-lg form-control" OnClick="saveButton_Click"/>
+            <asp:Button ID="saveButton" runat="server" CssClass="btn btn-success btn-lg button-control" OnClick="saveButton_Click" Text="حفظ التعديلات"/>
         </asp:Panel>
     </form>
 </asp:Content>

@@ -31,10 +31,8 @@ public partial class UserManagement : System.Web.UI.Page
                     "<span class=\"info\"><i class=\"fas fa-phone-alt\"></i><a href=\"tel:{3}\">{3}</a></span>\n" +
                     "<span class=\"info\"><i class=\"fas fa-at\"></i><a href=\"mailto:{4}\">{4}</a><br /></span>\n" +
                     "</address>\n" +
-                    "<label><input type=\"checkbox\" disabled {5}/> مدير نظام ؟</label>\n" +
                     "</div>\n",
-                        dataRow["name"], dataRow["role"], dataRow["username"], dataRow["mobile"], dataRow["email"],
-                        (bool.Parse(dataRow["is_admin"].ToString()).Equals(true) ? "checked" : "")
+                        dataRow["name"], dataRow["role"], dataRow["username"], dataRow["mobile"], dataRow["email"]
                     )
                 });
             }
