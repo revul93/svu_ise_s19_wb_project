@@ -1,16 +1,28 @@
 ﻿using System;
-using System.Data;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Web.UI.WebControls;
 
 public partial class AddPlan : System.Web.UI.Page
 {
-    int userId, orphanageId;
+    int user_id, orphanage_id;
     protected void Page_Load(object sender, EventArgs e)
     {
-        userId = 18;
-        orphanageId = 25;
+        if (Session["user_id"] == null)
+        {
+            Response.Redirect("NotAuthorized.aspx");
+            return;
+        }
+        user_id = int.Parse(Session["user_id"].ToString());
+        using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLDBConnection"].ToString()))
+        {
+            sqlConnection.Open();
+            using (SqlCommand sqlCommand = new SqlCommand())
+            {
+                sqlCommand.Connection = sqlConnection;
+                sqlCommand.CommandText = String.Format("SELECT orphanage_id FROM [dbo].[User] WHERE id = {0};", user_id);
+                orphanage_id = int.Parse(sqlCommand.ExecuteScalar().ToString());
+            }
+        }
     }
 
     protected void submitButton_Click(object sender, EventArgs e)
@@ -27,7 +39,7 @@ public partial class AddPlan : System.Web.UI.Page
                         "VALUES(N'{0}', N'{1}', '{2}', {3}, {4});" +
                         "SELECT CAST(SCOPE_IDENTITY() AS int);",
                         nameTextBox.Text, descriptionTextBox.Text, methodDropDownList.SelectedValue == "نقدي" ? "cash" : "physical",
-                        int.Parse(amountTextBox.Text), orphanageId);
+                        int.Parse(amountTextBox.Text), orphanage_id);
 
                     if (Convert.ToInt32(sqlCommand.ExecuteScalar()) > 0)
                     {

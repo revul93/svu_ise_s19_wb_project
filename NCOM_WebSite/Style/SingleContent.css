@@ -3,6 +3,8 @@
 }
 
 .content {
+    font-family: 'Cairo', sans-serif;
+    font-size: 32px;
     margin-top: 15vh;
     margin-bottom: 30vh;
     align-self: center;
@@ -10,12 +12,16 @@
     max-width: 750px;
     border: 2px solid lightgrey;
     border-radius: 15px;
-    background-color: wheat;
+    background-color: #778899;
     padding: 5vh;
-    font-size: 20px;
     text-decoration: none;
     text-align: center;
-    color: black;
+    color: aliceblue;
+}
+
+.content a {
+    color: aliceblue;
+    text-decoration: underline;
 }
 
 .img {

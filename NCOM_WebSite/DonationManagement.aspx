@@ -8,7 +8,6 @@
     <div class="list-container">
         <form runat="server">
             <asp:PlaceHolder ID="donationList" runat="server">
-
             </asp:PlaceHolder>
         </form>
     </div>

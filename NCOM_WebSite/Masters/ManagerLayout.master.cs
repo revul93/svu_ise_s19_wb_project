@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Configuration;
+using System.Data.SqlClient;
 
 public partial class ManagerLayout : System.Web.UI.MasterPage
 {

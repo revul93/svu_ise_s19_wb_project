@@ -12,9 +12,12 @@
         </div>
     </div>
 
-    <div class="list-container">
-        <asp:PlaceHolder ID="planList" runat="server">
+    <form runat="server">
+        <div class="list-container">
+            <asp:PlaceHolder ID="planList" runat="server">
             
-        </asp:PlaceHolder>
-    </div>
+            </asp:PlaceHolder>
+        </div>
+    </form>
+
 </asp:Content>
