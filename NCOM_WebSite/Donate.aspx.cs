@@ -62,7 +62,7 @@ public partial class Donate : System.Web.UI.Page
         if (int.Parse(orphanageDropDownList.SelectedValue) > 0)
         {
             ConnectDB();
-            sqlCommand.CommandText = String.Format("SELECT id, name, description FROM [dbo].[Plan] WHERE orphanage_id = {0};",
+            sqlCommand.CommandText = String.Format("SELECT id, name, description FROM [dbo].[Plan] WHERE orphanage_id = {0} AND hidden = 0;",
                                                             int.Parse(orphanageDropDownList.SelectedValue));
             dataReader = sqlCommand.ExecuteReader();
             while (dataReader.Read())

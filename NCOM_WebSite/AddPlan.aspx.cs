@@ -38,8 +38,8 @@ public partial class AddPlan : System.Web.UI.Page
                     sqlCommand.CommandText = String.Format("INSERT INTO [dbo].[Plan] (name, description, type, amount_required, orphanage_id) " +
                         "VALUES(N'{0}', N'{1}', '{2}', {3}, {4});" +
                         "SELECT CAST(SCOPE_IDENTITY() AS int);",
-                        nameTextBox.Text, descriptionTextBox.Text, methodDropDownList.SelectedValue == "نقدي" ? "cash" : "physical",
-                        int.Parse(amountTextBox.Text), orphanage_id);
+                        nameTextBox.Text, descriptionTextBox.Text, methodDropDownList.SelectedValue,
+                        int.Parse(amountTextBox.Text), orphanage_id) ;
 
                     if (Convert.ToInt32(sqlCommand.ExecuteScalar()) > 0)
                     {

@@ -26,7 +26,7 @@ public partial class AddOrphanage : System.Web.UI.Page
                         " address_coordinates, email, telephone, capacity, sponsored_orphans)" +
                         "VALUES(N'{0}', '{1}', N'{2}', N'{3}', N'{4}', N'{5}', '{6}', '{7}', '{8}', '{9}', '{10}');" +
                         "SELECT CAST(SCOPE_IDENTITY() AS int);",
-                        nameTextBox.Text, "Images/Orphanages/" + logoFileUpload.FileName, descriptionTextBox, 
+                        nameTextBox.Text, "Images/Orphanages/" + logoFileUpload.FileName, descriptionTextBox.Text, 
                         cityDropDownList.SelectedValue, streetTextBox.Text, addressDescriptionTextBox.Text,
                         coordinateTextBox.Text, emailTextBox.Text, telephoneTextBox.Text,
                         capacityTextBox.Text, sponsoredOrphansTextBox.Text);

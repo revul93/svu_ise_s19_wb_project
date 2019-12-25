@@ -82,7 +82,7 @@ public partial class EditOrphanage : System.Web.UI.Page
                         "UPDATE [dbo].[Orphanage] " +
                         "SET name = N'{0}', " +
                         "description = N'{1}', " +
-                        (logoFileUpload.HasFile ? "SET logo = N'{2}', " : "") +
+                        (logoFileUpload.HasFile ? " logo = N'{2}', " : "") +
                         "address_city = N'{3}', " +
                         "address_street = N'{4}', " +
                         "address_description = N'{5}', " +
@@ -93,12 +93,16 @@ public partial class EditOrphanage : System.Web.UI.Page
                         "sponsored_orphans = '{10}' " +
                         "WHERE id = {11};" +
                         "SELECT CAST(SCOPE_IDENTITY() AS int);",
-                        nameTextBox.Text, descriptionTextBox.Text, logoFileUpload.FileName,
+                        nameTextBox.Text, descriptionTextBox.Text, "Images/Orphanages/" + logoFileUpload.FileName,
                         cityTextBox.Text, streetTextBox.Text, addressDescriptionTextBox.Text, coordinateTextBox.Text,
                         telephoneTextBox.Text, emailTextBox.Text, int.Parse(capacityTextBox.Text), int.Parse(sponsoredOrphansTextBox.Text),
                         int.Parse(orphanageDropDownList.SelectedValue)
                     );
                     sqlCommand.ExecuteScalar();
+                    if (logoFileUpload.HasFile)
+                    {
+                        logoFileUpload.SaveAs(Server.MapPath("~/Images/Orphanages/" + logoFileUpload.FileName));
+                    }
                     Response.Write("<script>alert('تم حفظ التعديلات بنجاح');</script>");
                 }
             }
