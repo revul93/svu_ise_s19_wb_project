@@ -8,7 +8,7 @@
 <asp:Content ID="bodyContent" ContentPlaceHolderID="bodyContent" Runat="Server">
     <div class="link-list">
         <div class="link-list-item">
-            <a href="AddPlan.aspx">إضافة حملة</a>
+            <a href="AddPlan.aspx" class="btn btn-success btn-lg">إضافة حملة</a>
         </div>
     </div>
 

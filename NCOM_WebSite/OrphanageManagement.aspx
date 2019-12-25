@@ -8,10 +8,10 @@
 <asp:Content ID="bodyContent" ContentPlaceHolderID="bodyContent" Runat="Server">
     <div class="link-list">
         <div class="link-list-item">
-            <a href="AddOrphanage.aspx">إضافة دور أيتام</a>
+            <a href="AddOrphanage.aspx" class="btn btn-success btn-lg">إضافة دار أيتام</a>
         </div>
         <div class="link-list-item">
-            <a href="EditOrphanage.aspx">تعديل أو حذف دور أيتام</a>
+            <a href="EditOrphanage.aspx" class="btn btn-success btn-lg">تعديل دور أيتام</a>
         </div>
     </div>
     <div class="list-container">

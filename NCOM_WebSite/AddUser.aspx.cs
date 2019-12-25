@@ -53,7 +53,7 @@ public partial class AddUser : System.Web.UI.Page
 
                     if (int.Parse(orphanageDropDownList.SelectedValue) == -1 )
                     {
-                        Response.Write("<script>alert('يحب اختيار دار أيتام لممستخدم !!');</script>");
+                        Response.Write("<script>alert('يحب اختيار دار أيتام للممستخدم !!');</script>");
                         return;
                     }
 

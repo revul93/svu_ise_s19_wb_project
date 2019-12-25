@@ -9,7 +9,9 @@
     <form method="post" runat="server">
         <asp:panel ID="mainPanel" runat="server" CssClass="form-container">
             <asp:Label runat="server" CssClass="required">المستخدم</asp:Label>
-            <asp:DropDownList runat="server" ID="userDropDownList" CssClass="form-control" OnSelectedIndexChanged="userDropDownList_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
+            <asp:DropDownList runat="server" ID="userDropDownList" CssClass="form-control" OnSelectedIndexChanged="userDropDownList_SelectedIndexChanged" AutoPostBack="True">
+                <asp:ListItem Text="---- اختر مستخدم لتعديل بياناته ---" selected="selected" disabled="disabled" Value="-1"></asp:ListItem>
+            </asp:DropDownList>
         </asp:panel>
 
         <asp:Panel ID="subPanel" runat="server" CssClass="form-container">

@@ -25,11 +25,6 @@ public partial class Donate : System.Web.UI.Page
         {
             ConnectDB();
 
-            ListItem firstItem = new ListItem("--- اختر دور الأيتام ---", "-1");
-            firstItem.Attributes["disabled"] = "disabled";
-            firstItem.Attributes["selected"] = "selected";
-            orphanageDropDownList.Items.Add(firstItem);
-
             sqlCommand.CommandText = "SELECT id, name FROM [dbo].[Orphanage];";
             dataReader = sqlCommand.ExecuteReader();
             while (dataReader.Read())
@@ -111,8 +106,15 @@ public partial class Donate : System.Web.UI.Page
 
     protected void submitButton_Click(object sender, EventArgs e)
     {
+
         if (Page.IsValid)
         {
+            if (orphanageDropDownList.SelectedValue == "-1" ||
+                planDropDownList.SelectedValue == "-1" ||
+                methodDropDownList.SelectedValue == "-1")
+            {
+                return;
+            }
             ConnectDB();
             sqlCommand.CommandText = String.Format("INSERT INTO [dbo].[Donor] ([name], [address_City], [address_Street], " +
                                         "[address_description], [mobile], [email]) " +

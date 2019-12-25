@@ -78,7 +78,7 @@ public partial class Manager : System.Web.UI.Page
                     Button deleteButton = new Button
                     {
                         Text = "حذف الحملة",
-                        CssClass = "btn btn-danger btn-lg form-control button-control"
+                        CssClass = "btn btn-danger btn-lg button-control"
                     };
                     deleteButton.Attributes["plan_id"] = dataRow["id"].ToString();
                     deleteButton.OnClientClick = "if (confirm('سيؤدي ذلك إلى حذف الحملة نهائيا. استمرار ؟')) this.Click(); else return false;";

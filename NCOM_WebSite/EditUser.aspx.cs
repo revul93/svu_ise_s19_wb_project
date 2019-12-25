@@ -18,11 +18,6 @@ public partial class EditUser : System.Web.UI.Page
                 {
                     sqlDataAdapter.Fill(orphanageTable);
                 }
-
-                ListItem firstItem = new ListItem("---- اختر مستخدم لتعديل بياناته ---", "0");
-                firstItem.Attributes["selected"] = "selected";
-                firstItem.Attributes["disabled"] = "disabled";
-                userDropDownList.Items.Add(firstItem);
                 foreach (DataRow row in orphanageTable.Rows)
                 {
                     userDropDownList.Items.Add(new ListItem(row["name"].ToString(), row["id"].ToString()));
@@ -33,6 +28,10 @@ public partial class EditUser : System.Web.UI.Page
 
     protected void userDropDownList_SelectedIndexChanged(object sender, EventArgs e)
     {
+        if (userDropDownList.SelectedValue == "-1")
+        {
+            return;
+        }
         using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLDBConnection"].ToString()))
         {
             sqlConnection.Open();

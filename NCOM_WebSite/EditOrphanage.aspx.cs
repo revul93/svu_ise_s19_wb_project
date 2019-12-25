@@ -18,11 +18,6 @@ public partial class EditOrphanage : System.Web.UI.Page
                 {
                     sqlDataAdapter.Fill(orphanageTable);
                 }
-
-                ListItem firstItem = new ListItem("---- اختر دار أيتام لتعديلها ---", "0");
-                firstItem.Attributes["selected"] = "selected";
-                firstItem.Attributes["disabled"] = "disabled";
-                orphanageDropDownList.Items.Add(firstItem);
                 foreach (DataRow row in orphanageTable.Rows)
                 {
                     orphanageDropDownList.Items.Add(new ListItem(row["name"].ToString(), row["id"].ToString()));
@@ -33,6 +28,7 @@ public partial class EditOrphanage : System.Web.UI.Page
 
     protected void orphanageDropDownList_SelectedIndexChanged(object sender, EventArgs e)
     {
+        deleteButton.OnClientClick = "if (confirm('سيؤدي ذلك إلى حذف دار الأيتام نهائيا مع كافة المستخدمين والحملات المرتبطة بها. استمرار ؟')) this.Click(); else return false;";
         using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLDBConnection"].ToString()))
         {
             sqlConnection.Open();
@@ -66,7 +62,7 @@ public partial class EditOrphanage : System.Web.UI.Page
             {
                 sqlCommand.Connection = sqlConnection;
                 sqlCommand.CommandText = String.Format("DELETE FROM [dbo].[Orphanage] WHERE id = {0};", orphanageDropDownList.SelectedValue);
-                sqlCommand.ExecuteScalar();
+                sqlCommand.ExecuteNonQuery();
                 Response.Redirect(Request.RawUrl.ToString());
             }
         }

@@ -27,7 +27,7 @@ public partial class Login : System.Web.UI.Page
                 Session["is_admin"] = dataRead["is_admin"].ToString();
                 if (bool.Parse(dataRead["is_admin"].ToString()))
                 {
-                    Response.Redirect("OrphanageManagement.aspx");
+                    Response.Redirect("UserManagement.aspx");
                 }
                 else
                 {

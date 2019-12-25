@@ -8,11 +8,14 @@
 <asp:Content ID="bodyContent" ContentPlaceHolderID="bodyContent" Runat="Server">
     <form method="post" runat="server" class="form-container">
         <asp:Label runat="server" CssClass="required"> الجمعية: </asp:Label>
-        <asp:DropDownList ID="orphanageDropDownList" runat="server" AutoPostBack="true" OnSelectedIndexChanged="OrphanageDropDownList_SelectedIndexChanged" CssClass="form-control"></asp:DropDownList>
+        <asp:DropDownList ID="orphanageDropDownList" runat="server" AutoPostBack="true" OnSelectedIndexChanged="OrphanageDropDownList_SelectedIndexChanged" CssClass="form-control">
+            <asp:ListItem Text="--- اختر دور الأيتام ---" selected="selected" disabled="disabled" Value="-1"></asp:ListItem>
+        </asp:DropDownList>
         <asp:RequiredFieldValidator runat="server" ControlToValidate="orphanageDropDownList"></asp:RequiredFieldValidator>
 
         <asp:Label runat="server" CssClass="required"> الحملة: </asp:Label>
-        <asp:DropDownList ID="planDropDownList" runat="server" AutoPostBack="true" OnSelectedIndexChanged="PlanDropDownList_SelectedIndexChanged" CssClass="form-control"></asp:DropDownList>
+        <asp:DropDownList ID="planDropDownList" runat="server" AutoPostBack="true" OnSelectedIndexChanged="PlanDropDownList_SelectedIndexChanged" CssClass="form-control">
+        </asp:DropDownList>
         <asp:RequiredFieldValidator runat="server" ControlToValidate="planDropDownList"></asp:RequiredFieldValidator>
 
         <asp:Label runat="server" CssClass="required"> كمية التبرع: </asp:Label>
@@ -20,7 +23,8 @@
         <asp:RangeValidator ID="amountRangeValidator" runat="server" MinimumValue="1" MaximumValue="1000000000" CssClass="validation" ControlToValidate="amountTextBox" ErrorMessage="لا يمكن استقبال الكمية التي ادخلتها، إذا كنت تعتقد أنها كمية صحيحة، نرجو التواصل معنا"></asp:RangeValidator>
         
         <asp:Label runat="server" CssClass="required"> طريقة التبرع: </asp:Label>
-        <asp:DropDownList ID="methodDropDownList" runat="server" CssClass="form-control"></asp:DropDownList>
+        <asp:DropDownList ID="methodDropDownList" runat="server" CssClass="form-control">
+        </asp:DropDownList>
         <asp:RequiredFieldValidator runat="server" ControlToValidate="methodDropDownList"></asp:RequiredFieldValidator>
         
         <asp:Label runat="server" CssClass="required"> الإسم: </asp:Label>

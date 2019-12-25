@@ -9,9 +9,11 @@
     <form method="post" runat="server">
         <asp:panel ID="mainPanel" runat="server" CssClass="form-container">
             <asp:Label runat="server" CssClass="required">دار الأيتام</asp:Label>
-            <asp:DropDownList runat="server" ID="orphanageDropDownList" CssClass="form-control" OnSelectedIndexChanged="orphanageDropDownList_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
+            <asp:DropDownList runat="server" ID="orphanageDropDownList" CssClass="form-control" OnSelectedIndexChanged="orphanageDropDownList_SelectedIndexChanged" AutoPostBack="True">
+                <asp:ListItem Text="---- اختر دار أيتام لتعديلها ---" selected="selected" disabled="disabled" Value="-1"></asp:ListItem>
+            </asp:DropDownList>
             
-            <asp:Button ID="deleteButton" runat="server" CssClass="btn btn-danger btn-lg form-control button-control" Text="حذف الدار" OnClick="deleteButton_Click" /> 
+            <asp:Button ID="deleteButton" runat="server" CssClass="btn btn-danger btn-lg form-control" Text="حذف الدار" OnClick="deleteButton_Click" /> 
         </asp:panel>
 
         <asp:Panel ID="subPanel" runat="server" CssClass="form-container">

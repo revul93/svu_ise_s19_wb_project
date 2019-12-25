@@ -5,6 +5,11 @@
 </asp:Content>
 
 <asp:Content ID="bodyContent" ContentPlaceHolderID="bodyContent" Runat="Server">
+    <div class="link-list">
+        <div class="link-list-item">
+            <a href="EditDonation.aspx" class="btn btn-success btn-lg">تعديل التبرعات</a>
+        </div>
+    </div>
     <div class="list-container">
         <form runat="server">
             <asp:PlaceHolder ID="donationList" runat="server">

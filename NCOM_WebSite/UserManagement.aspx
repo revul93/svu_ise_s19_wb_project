@@ -7,10 +7,10 @@
 <asp:Content ID="bodyContent" ContentPlaceHolderID="bodyContent" Runat="Server">
     <div class="link-list">
         <div class="link-list-item">
-            <a href="AddUser.aspx">إضافة مستخدم</a>
+            <a href="AddUser.aspx" class="btn btn-success btn-lg">إضافة مستخدم</a>
         </div>
         <div class="link-list-item">
-            <a href="EditUser.aspx">تعديل مستخدم</a>
+            <a href="EditUser.aspx" class="btn btn-success btn-lg">تعديل مستخدم</a>
         </div>
     </div>"
     <div class="list-container">
