@@ -1,0 +1,24 @@
+Student names:
+Omar_65270
+Khadijah_71190
+
+Website URL:
+http://isewbncom-001-site1.atempurl.com/
+
+Github URL:
+https://github.com/revul93/svu_ise_s19_wb_project
+
+Login Users:
+
+Admin Users:
+	Name		Password
+	omar		omar123
+	khadija		khadija123
+
+
+Some Orphanage Managers:
+	m.ismail	m123
+	l.darweesh	l123
+	m.mahmoud	m123
+
+
